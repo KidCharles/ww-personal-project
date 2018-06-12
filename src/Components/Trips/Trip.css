@@ -1,0 +1,16 @@
+.trips{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trip{
+    margin: 2%;
+}
+
+.mappedtrip{
+    width:400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

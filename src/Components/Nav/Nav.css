@@ -1,0 +1,66 @@
+
+.header{
+    position: relative;
+    z-index: 5;
+    /* you need position in order to use z-index */
+    /* the zindex on the drawer is 0, and will be behind. */
+    height: 60px;
+    justify-content: space-around ;
+    align-items: center;
+    color: var(--white)
+}
+
+.menuItem{
+    padding: 10px;
+}
+
+.menuItem:hover{
+    background: var(--secondaryColor);
+}
+
+.navlogo{
+    width: 200px;
+    padding-top:20px;  
+    padding-left:0px;    
+  
+}
+
+/* ---ham menu--- */
+.ham{
+    display: none;
+}
+.bar{
+    background: var(--secondaryColor);
+    width: 35px;
+    height: 4px;
+    margin: 3px;
+    transition: .5s;
+}
+.bar1{
+    transform: rotate(405deg) translate(8px,3px)
+}
+.bar2{
+    transform: rotate(-405deg);
+    background: rgba(0, 0, 0, 0)
+}
+.bar3{
+    transform: rotate(-405deg) translate(7px, -4px)
+}
+@media(max-width:700px){
+    .ham{
+        display: inline;
+    }
+    .menuList{
+        display: none
+    }
+} 
+a {
+    color: white;
+    text-decoration: none;
+}
+a:visited {
+    color: white;
+}
+a:active {
+    color: red;
+}

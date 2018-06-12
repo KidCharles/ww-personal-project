@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+  /* --mainColor: #FF5F6D;
+  --secondaryColor: #FFC371;  */
+
+  --mainColor: #222;
+  --secondaryColor: #fff; 
+
+  /* --mainColor: #00d2ff;
+  --secondaryColor: #928DAB; */
+  --black : #555;
+  --white : #fff;
+  background: var(--mainColor);
+  height:100vh;
+}
+
+div{
+  font-weight: 800;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+}
