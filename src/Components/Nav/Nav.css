@@ -12,10 +12,13 @@
 
 .menuItem{
     padding: 10px;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 0.125em;
+    transition: border-bottom-color 50ms linear 0s;
 }
 
 .menuItem:hover{
-    background: var(--secondaryColor);
+    border-bottom-color: #FFF;
 }
 
 .navlogo{
@@ -24,6 +27,11 @@
     padding-left:0px;    
   
 }
+
+.menuList{
+    display: inline;
+}
+
 
 /* ---ham menu--- */
 .ham{
@@ -46,6 +54,18 @@
 .bar3{
     transform: rotate(-405deg) translate(7px, -4px)
 }
+
+a {
+    color: white;
+    text-decoration: none;
+}
+a:visited {
+    color: rgba(255, 255, 255, 0.123);
+}
+a:active {
+    color: rgb(117, 117, 117);
+}
+
 @media(max-width:700px){
     .ham{
         display: inline;
@@ -54,13 +74,3 @@
         display: none
     }
 } 
-a {
-    color: white;
-    text-decoration: none;
-}
-a:visited {
-    color: white;
-}
-a:active {
-    color: red;
-}

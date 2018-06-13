@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import Nav from '../Nav/Nav';
 // import Gear from '../Gear/Gear';
-import Trips from '../Trips/Trips';
+// import Trips from '../Trips/Trips';
 
 
 
@@ -19,16 +19,9 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        //axios call to db, gear / trips  .then => res update redux state 
-        axios.get('/insta')
-            .then(res => {
-                let images = res.data.data.map((e, i) => {
-                    let images = e.images.low_resolution.url
-                    return images
-                })
-                this.setState({ insta: images })
-            }
-            )
+        axios.get('/insta').then(res => {
+            this.setState({ insta: res.data})
+        })
     }
 
     handleChange(val) {
@@ -84,8 +77,8 @@ class Dashboard extends Component {
                 {mappedGear}
                 Trips
                 {mappedTrips}
-                <div>
-                    {mappedphotos}
+                <div className='row' >
+                {mappedphotos}
                 </div>
             </div>
         )

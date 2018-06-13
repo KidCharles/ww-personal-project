@@ -37,15 +37,19 @@ export default class Login extends Component {
         return (
             <div>
                 <img src={logo} className='logo' alt='Wayfaring World logo' />
-                <div>
+                <div >
                     <Link to='/dash' >
                         <button>Enter</button>
                     </Link>
                 </div>
                 <div>
-                    <button type='' className='' onClick={() => this.handleAuthClick()} >Login/Register</button>
+                    <br/>
+                    <br/>
                     <input type='text' className='' onChange={(e) => this.handleUsernameChange(e.target.value)} />
                     <input type='text' className='' onChange={(e) => this.handlePasswordChange(e.target.value)} />
+                    <br/>
+                    <br/>
+                    <button type='' className='' onClick={() => this.handleAuthClick()} >Login/Register</button>
                 </div>
 
 

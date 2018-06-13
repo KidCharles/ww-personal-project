@@ -2,21 +2,23 @@
   text-align: center;
   /* --mainColor: #FF5F6D;
   --secondaryColor: #FFC371;  */
-
+  
   --mainColor: #222;
   --secondaryColor: #fff; 
-
+  
+  --maintext: 'Roboto Condensed', sans-serif;
+  --secondarytext: 'Roboto Slab', serif;
+  
   /* --mainColor: #00d2ff;
   --secondaryColor: #928DAB; */
   --black : #555;
   --white : #fff;
   background: var(--mainColor);
+  font-family: var(--maintext);
   height:100vh;
 }
 
-div{
-  font-weight: 800;
-}
+
 .column{
   display: flex;
   flex-direction: column;
@@ -24,4 +26,67 @@ div{
 .row{
   display: flex;
   flex-direction: row;
+}
+
+button{
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--maintext);
+  font-size:13px;
+}
+
+img{
+  width:400px;
+}
+
+input,
+label,
+select,
+textarea
+{
+	margin:0;
+	border:0;
+  padding:0;
+  background: transparent;
+  border-bottom: 1px solid rgb(247, 247, 247);
+	display:inline-block;
+	vertical-align:middle;
+	white-space:normal;
+	background:none;
+	line-height:1;
+	
+	/* Browsers have different default form fonts */
+	font-size:13px;
+  font-family: var(--maintext);
+  color: white;
+}
+
+input:focus
+{
+	outline:0;
+}
+
+input,
+textarea
+{
+	-webkit-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	box-sizing:content-box;
+}
+
+h1{
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--white)
+}
+
+p{
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white)
 }

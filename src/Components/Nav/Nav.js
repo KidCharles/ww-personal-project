@@ -39,27 +39,31 @@ export default class Nav extends Component {
                             </Link>
                         </div>
 
-                        <section className='menuList row'>
-                            <Link to='/trip' >
-                                <div className='menuItem'>Trips</div>
-                            </Link>
-                            <Link to='/gear' >
-                                <div className='menuItem'>Gear</div>
-                            </Link>
-                            <Link to='/blog' >
-                                <div className='menuItem'>Blog</div>
-                            </Link>
-                            <Link to='/about' >
-                                <div className='menuItem'>About</div>
-                            </Link>
-                            <Link to='/about' >
-                                <div className='menuItem'>Contact US</div>
-                            </Link>
-                            <Link to='/' >
-                                <div className='menuItem'>Login/Register</div>
-                            </Link>
 
-                        </section>
+                        <div className='menuList' >
+                            <section className='row'>
+                                <Link to='/trip' >
+                                    <div className='menuItem'>Trips</div>
+                                </Link>
+                                <Link to='/gear' >
+                                    <div className='menuItem'>Gear</div>
+                                </Link>
+                                <Link to='/blog' >
+                                    <div className='menuItem'>Blog</div>
+                                </Link>
+                                <Link to='/about' >
+                                    <div className='menuItem'>About</div>
+                                </Link>
+                                <Link to='/about' >
+                                    <div className='menuItem'>Contact US</div>
+                                </Link>
+                                <Link to='/' >
+                                    <div className='menuItem'>Login/Register</div>
+                                </Link>
+
+                            </section>
+                        </div>
+
                     </nav>
                     <Drawer
                         drawerToggle={this.state.drawerToggle}
