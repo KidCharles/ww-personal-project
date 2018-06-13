@@ -16,7 +16,6 @@ class AdminTrip extends Component {
             trip_short_desc: '',
             trip_price: 0,
             trip_color: '',
-            trips:[]
         }
     }
 
@@ -61,6 +60,8 @@ class AdminTrip extends Component {
             axios.post('/addtrip', body).then((trips) => {
                 // make sure this endpoint sends back an updated trips list
                 // then update trips on redux state 
+                this.setState({trips: trips.data})
+
                 this.props.addTrip(this.state.trips)
             })
     }

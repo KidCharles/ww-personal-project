@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 // import axios from 'axios';
 import logo from '../Assets/ww_logo_white.svg';
 import './Login.css';
+// import ''
 
 //import { addUser } from '../ducks/reducer';
 export default class Login extends Component {
@@ -36,6 +37,8 @@ export default class Login extends Component {
     render() {
         return (
             <div>
+            <div className='background'>
+                 {/* <a href="/Users/charleshatch/devMtn/wayfaring-world/src/Components/Assets/login_background.svg" cls ></a> */}
                 <img src={logo} className='logo' alt='Wayfaring World logo' />
                 <div >
                     <Link to='/dash' >
@@ -53,6 +56,8 @@ export default class Login extends Component {
                 </div>
 
 
+            </div>
+           
             </div>
         )
     }

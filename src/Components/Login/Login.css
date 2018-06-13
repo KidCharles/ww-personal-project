@@ -4,3 +4,13 @@
     align-items: center;
     justify-content: center;
 }
+
+.background{
+    position:absolute;
+    display: block;
+    text-indent: -9999px;
+    /* width: 100px; */
+    height: 82px;
+    background: url(/Users/charleshatch/devMtn/wayfaring-world/src/Components/Assets/login_background.svg);
+    background-size: 100px 82px;
+}

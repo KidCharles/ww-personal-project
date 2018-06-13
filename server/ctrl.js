@@ -23,6 +23,13 @@ module.exports = {
             })
     },
 
+    getTrips: (req, res) => {
+        const db = req.app.get('db');
+        db.get_trips()
+            .then(trips => res.status(200).send(trips))
+            .catch(() => res.status(500).send())
+    },
+
     addTrip: (req, res) => {
         const db = req.app.get('db');
         const {trip_name, trip_img, trip_long_desc, trip_short_desc, trip_price, trip_color} = req.body

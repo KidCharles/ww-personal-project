@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../Nav/Nav'
 import Trip from './Trip'
+import axios from 'axios';
 import trip1 from '../Assets/Trip-yosemite.svg';
 import trip2 from '../Assets/Trip-moab.svg';
 import trip3 from '../Assets/Trip-oahu.svg';
+
 
 import '../../App.css';
 import './Trip.css';
@@ -14,8 +16,16 @@ class Trips extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            trips:[]
         }
+    }
+
+    componentDidMount() {
+        axios.get('/trips').then((res) => {
+            this.setState({
+                trips: res.data
+            })
+        })
     }
 
     addToCart() { }
@@ -26,9 +36,10 @@ class Trips extends Component {
         let mappedTrips = this.props.trips.map((e, i) => {
             return (
                 <div key={i} style={{ "backgroundColor": e.trip_color }} className='mappedtrip' >
-                    <Trip
+
+                    {/* <Trip
                         trips={e}
-                    />
+                    /> */}
                 </div>
 
             )

@@ -5,6 +5,7 @@ import axios from 'axios';
 import Nav from '../Nav/Nav';
 // import Gear from '../Gear/Gear';
 // import Trips from '../Trips/Trips';
+import './Dashboard.css';
 
 
 
@@ -41,7 +42,7 @@ class Dashboard extends Component {
     render() {
         let mappedphotos = this.state.insta.map((e, i) =>
             <div key={i}>
-                <div>
+                <div className='instapic slider' >
                     <img alt='' src={e} />
                 </div>
             </div>
@@ -77,6 +78,7 @@ class Dashboard extends Component {
                 {mappedGear}
                 Trips
                 {mappedTrips}
+                <h1 className='title '>Insta</h1>
                 <div className='row' >
                 {mappedphotos}
                 </div>
