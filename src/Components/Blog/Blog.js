@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Nav from '../Nav/Nav';
+import '../Dashboard/Dashboard.css';
 
 export default class Blog extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ export default class Blog extends Component {
     }
     render() {
         return (
-            <div>
+            <div className='backgroundPhoto' >
                 <Nav />
                 <h1>Blog</h1>
             </div>

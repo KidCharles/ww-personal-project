@@ -1,6 +1,17 @@
+.backgroundPhoto{
+    position: relative;
+    background: url("../Assets/ww_background.svg");
+    width:90%;
+    left: 50%;
+    top: 15%;
+    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
+}
+
 .title{
-    text-align: left;
-    margin-left: 100px;
+    margin: 20px;
+    display: flex;
 }
 
 .instapic{

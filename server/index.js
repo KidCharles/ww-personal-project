@@ -33,7 +33,7 @@ app.use(checkUserSession)
 
 //endpoints:
 app.get('/insta', ctrl.getInsta)
-app.get('/trips', ctrl.getTrips)
+app.get('/api/trips', ctrl.getTrips)
 app.post('/addtrip', ctrl.addTrip)
 
 // app.post('/login', ctrl.loginUser)

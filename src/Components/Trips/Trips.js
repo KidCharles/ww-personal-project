@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../Nav/Nav'
-import Trip from './Trip'
+// import Trip from './Trip'
 import axios from 'axios';
-import trip1 from '../Assets/Trip-yosemite.svg';
-import trip2 from '../Assets/Trip-moab.svg';
-import trip3 from '../Assets/Trip-oahu.svg';
+import '../Dashboard/Dashboard.css';
 
 
 import '../../App.css';
@@ -16,12 +14,12 @@ class Trips extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            trips:[]
+            trips: []
         }
     }
 
     componentDidMount() {
-        axios.get('/trips').then((res) => {
+        axios.get('/api/trips').then((res) => {
             this.setState({
                 trips: res.data
             })
@@ -29,43 +27,39 @@ class Trips extends Component {
     }
 
     addToCart() { }
-
     render() {
+        console.log(this.state)
         //mapped over props.trips
         //pss {e} to trip.. construct the look of the trip in trip JS
-        let mappedTrips = this.props.trips.map((e, i) => {
+        let mappedTrips = this.state.trips.map((e, i) => {
             return (
-                <div key={i} style={{ "backgroundColor": e.trip_color }} className='mappedtrip' >
-
-                    {/* <Trip
-                        trips={e}
-                    /> */}
+                <div key={i} style={{ "backgroundColor": e.trip_color }} className='trips' >
+                    <div>
+                        <h1>coordinates</h1>
+                        {/* amazon s3/ cloudinary */}
+                        <img src={e.trip_img} className='' alt='trip pic' />
+                        <h1>coordinates</h1>
+                        <h1>Backpacker Package</h1>
+                        <h1>{e.trip_short_desc}</h1>
+                        <h1>{e.trip_price}</h1>
+                    </div>
                 </div>
-
             )
         })
         return (
-            <div>
+            <div >
                 <Nav />
-                <div className='trips column' >
-                    <img src={trip1} className='trip navlogo' alt='Yosemite Ca trip icon' />
-                    <img src={trip2} className='trip navlogo' alt='Moab Ut trip icon' />
-                    <img src={trip3} className='trip navlogo' alt='Oahu Hawaii trip icon' />
-                </div>
-                <div>
-                    {this.props.trip_name}
+                <div className='backgroundPhoto'>
+                    {mappedTrips}
                 </div>
             </div>
         )
     }
 }
-
-
 function mapStateToProps(state) {
     return {
         trips: state.trips
 
     }
 }
-
 export default connect(mapStateToProps)(Trips);

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 // import axios from 'axios';
 import logo from '../Assets/ww_logo_white.svg';
+import background from '../Assets/login_background.svg';
 import './Login.css';
 // import ''
 
@@ -36,28 +37,17 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div>
-            <div className='background'>
-                 {/* <a href="/Users/charleshatch/devMtn/wayfaring-world/src/Components/Assets/login_background.svg" cls ></a> */}
+            <div className='login'  >
+                <img src={background} className='background' alt='textured' />
                 <img src={logo} className='logo' alt='Wayfaring World logo' />
-                <div >
+                <div className='loginInputs column' >
                     <Link to='/dash' >
                         <button>Enter</button>
                     </Link>
-                </div>
-                <div>
-                    <br/>
-                    <br/>
                     <input type='text' className='' onChange={(e) => this.handleUsernameChange(e.target.value)} />
                     <input type='text' className='' onChange={(e) => this.handlePasswordChange(e.target.value)} />
-                    <br/>
-                    <br/>
-                    <button type='' className='' onClick={() => this.handleAuthClick()} >Login/Register</button>
+                    <button onClick={() => this.handleAuthClick()} >Login/Register</button>
                 </div>
-
-
-            </div>
-           
             </div>
         )
     }

@@ -21,7 +21,7 @@ class Dashboard extends Component {
 
     componentDidMount() {
         axios.get('/insta').then(res => {
-            this.setState({ insta: res.data})
+            this.setState({ insta: res.data })
         })
     }
 
@@ -42,7 +42,7 @@ class Dashboard extends Component {
     render() {
         let mappedphotos = this.state.insta.map((e, i) =>
             <div key={i}>
-                <div className='instapic slider' >
+                <div className='instapic ' >
                     <img alt='' src={e} />
                 </div>
             </div>
@@ -73,15 +73,17 @@ class Dashboard extends Component {
         return (
             <div >
                 <Nav />
-                <h1>Dash</h1>
-                Gear
-                {mappedGear}
-                Trips
-                {mappedTrips}
-                <h1 className='title '>Insta</h1>
-                <div className='row' >
-                {mappedphotos}
+                <div className='backgroundPhoto' >
+                    <h1 className='title'>Gear</h1>
+                    {mappedGear}
+                    <h1 className='title'>Trips</h1>
+                    {mappedTrips}
+                    <h1 className='title'>Insta</h1>
+                    <div className='row' >
+                        {mappedphotos}
+                    </div>
                 </div>
+
             </div>
         )
     }

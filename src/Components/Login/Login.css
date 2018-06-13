@@ -1,16 +1,30 @@
+.login{
+    position: relative;
+    overflow: hidden;
+}
+
+.background{
+    width: 75%;
+    height: 100%;
+    
+}
+
 .logo{
+    position: absolute;
     width:30%;
-    margin-top: 200px;
+    left: 50%;
+    top: 15%;
+    transform: translateX(-50%);
     align-items: center;
     justify-content: center;
 }
 
-.background{
-    position:absolute;
-    display: block;
-    text-indent: -9999px;
-    /* width: 100px; */
-    height: 82px;
-    background: url(/Users/charleshatch/devMtn/wayfaring-world/src/Components/Assets/login_background.svg);
-    background-size: 100px 82px;
+.loginInputs{
+    position: absolute;
+    width:30%;
+    left: 50%;
+    top: 52%;
+    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
 }

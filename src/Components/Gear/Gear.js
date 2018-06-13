@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import Nav from '../Nav/Nav'
+import Nav from '../Nav/Nav';
+import '../Dashboard/Dashboard.css';
+
+
 
 class Gear extends Component {
     constructor(props) {
@@ -21,7 +24,7 @@ class Gear extends Component {
 
     render() {
         return (
-            <div>
+            <div className='backgroundPhoto' >
                 <Nav/>
                 <h1>Gear</h1>
             </div>

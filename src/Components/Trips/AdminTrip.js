@@ -5,6 +5,8 @@ import axios from 'axios';
 import Nav from '../Nav/Nav'
 import './Trip.css';
 import '../../App.css';
+import '../Dashboard/Dashboard.css';
+
 
 class AdminTrip extends Component {
     constructor(props) {
@@ -53,7 +55,7 @@ class AdminTrip extends Component {
             trip_price: this.state.trip_price,
             trip_color: this.state.trip_color,
         }
-        !body.name
+        !body.trip_name
             ?
             alert('please fill out form correctly')
             :
@@ -68,15 +70,16 @@ class AdminTrip extends Component {
 
     render() {
         return (
-            <div className='mappedtrip column' >
+            <div className='backgroundPhoto' >
                 <Nav />
-                <form>
+                <form className='mappedtrip column' >
                     <p>TRIP NAME:</p>
 
                     <input type='text' className='column' onChange={(e) => this.handleTripName(e.target.value)} />
                     <p>TRIP ICON:</p>
 
-                    <input type='imgage' className='column' onChange={(e) => this.handleTripImg(e.target.value)} />
+                    {/* image URL */}
+                    <input type='text' className='column' onChange={(e) => this.handleTripImg(e.target.value)} />
                     <p>LONG DESCRIPTION:</p>
 
                     <input type='text' className='column' onChange={(e) => this.handleLongDesc(e.target.value)} />
@@ -90,7 +93,7 @@ class AdminTrip extends Component {
 
                     <input type='color' className='column' onChange={(e) => this.handleTripColor(e.target.value)} />
                     <br />
-                    <button>CREAT NEW TRIP</button>
+                    <button onClick={()=> this.handleClick()} >CREAT NEW TRIP</button>
                 </form>
             </div>
         )
