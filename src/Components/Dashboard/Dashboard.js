@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import Nav from '../Nav/Nav';
 // import Gear from '../Gear/Gear';
 import Trips from '../Trips/Trips';
@@ -11,6 +12,7 @@ class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            insta: []
             // trips:[],
             // gear: []
         }
@@ -18,6 +20,15 @@ class Dashboard extends Component {
 
     componentDidMount() {
         //axios call to db, gear / trips  .then => res update redux state 
+        axios.get('/insta')
+            .then(res => {
+                let images = res.data.data.map((e, i) => {
+                    let images = e.images.low_resolution.url
+                    return images
+                })
+                this.setState({ insta: images })
+            }
+            )
     }
 
     handleChange(val) {
@@ -35,7 +46,14 @@ class Dashboard extends Component {
     }
 
     render() {
-        //let mapped trips/gear
+        let mappedphotos = this.state.insta.map((e, i) =>
+            <div key={i}>
+                <div>
+                    <img alt='' src={e} />
+                </div>
+            </div>
+        )
+
         let mappedTrips = this.props.trips.map((e, i) => {
             return (
                 <Link to='/trips' >
@@ -66,6 +84,9 @@ class Dashboard extends Component {
                 {mappedGear}
                 Trips
                 {mappedTrips}
+                <div>
+                    {mappedphotos}
+                </div>
             </div>
         )
     }

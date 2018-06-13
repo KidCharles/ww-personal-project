@@ -32,6 +32,7 @@ app.use(session({
 app.use(checkUserSession)
 
 //endpoints:
+app.get('/insta', ctr.getInsta)
 
 // app.post('/posts/', ctrl.addPost)
 // app.post('/login', ctrl.loginUser)
