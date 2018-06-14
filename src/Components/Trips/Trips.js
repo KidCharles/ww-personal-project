@@ -35,7 +35,6 @@ class Trips extends Component {
         })
     }
 
-
     addToCart() { }
 
     render() {

@@ -54,7 +54,13 @@ export default class Login extends Component {
                     </Link>
                     <input type='text' className='' onChange={(e) => this.handleUsernameChange(e.target.value)} />
                     <input type='text' className='' onChange={(e) => this.handlePasswordChange(e.target.value)} />
+                    
+                    <a href={process.env.REACT_APP_LOGIN}>
+                        <button>Login</button>
+                    </a>
+
                     <button onClick={() => this.handleAuthClick()} >Login/Register</button>
+
                 </div>
             </div>
         )

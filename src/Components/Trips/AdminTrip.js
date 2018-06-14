@@ -99,55 +99,41 @@ class AdminTrip extends Component {
                 this.setState({ trip_img: fileURL })
             })
         });
-
         // Once all the files are uploaded 
         // axios.all(uploaders).then(() => {
         //     // ... perform after upload is successful operation
 
         // });
     }
-
     render() {
         return (
             <div>
                 <Nav />
                 <div className='backgroundPhoto column' >
                     <form className='mappedtrip column' >
-                        <p>TRIP NAME:</p>
-
-                        <input value={this.state.trip_name} type='text' className='column' onChange={(e) => this.handleTripName(e.target.value)} />
-                        <p>TRIP ICON:</p>
-
+                        <p>ENTER TRIP NAME:</p>
+                        <input className='column' onChange={(e) => this.handleTripName(e.target.value)} value={this.state.trip_name} type='text'  />
+                        <p>ENTER TRIP ICON:</p>
                         <Dropzone
                             onDrop={this.handleDrop}
                             multiple
                             accept="image/*"
-                        // style={styles.dropzone}  make a var that is an object, that has styles in it
                         >
                             <p>Drop your files or click here to upload</p>
                         </Dropzone>
-
-                        {/* image URL, DROPZONE GOES, UPLAD FILE THING HERE */}
-                        <input value={this.state.trip_img} type='text' className='column' onChange={(e) => this.handleTripImg(e.target.value)} />
-                        <p>LONG DESCRIPTION:</p>
-
-                        <input value={this.state.trip_long_desc} type='text' className='column' onChange={(e) => this.handleLongDesc(e.target.value)} />
-                        <p>SHORT DESCRIPTION:</p>
-
-                        <input value={this.state.trip_short_desc} type='text' className='column' onChange={(e) => this.handleShortDesc(e.target.value)} />
-                        <p>TRIP PRICE:</p>
-
-                        <input value={this.state.trip_price} type='number' className='column' onChange={(e) => this.handleTripPrice(e.target.value)} />
-                        <p>COLOR:</p>
-
-                        <input value={this.state.trip_color} type='color' className='column' onChange={(e) => this.handleTripColor(e.target.value)} />
-                        <br />
-                        <button onClick={(e) => this.handleClick(e)} >CREAT NEW TRIP</button>
+                        <input className='column' onChange={(e) => this.handleTripImg(e.target.value)} value={this.state.trip_img} type='text'  />
+                        <p>ENTER LONG DESCRIPTION:</p>
+                        <input className='column' onChange={(e) => this.handleLongDesc(e.target.value)} value={this.state.trip_long_desc} type='text' />
+                        <p>ENTER SHORT DESCRIPTION:</p>
+                        <input  className='column' onChange={(e) => this.handleShortDesc(e.target.value)}value={this.state.trip_short_desc} type='text' />
+                        <p>ENTER TRIP PRICE:</p>
+                        <input className='column' onChange={(e) => this.handleTripPrice(e.target.value)} value={this.state.trip_price} type='number'  />
+                        <p>ENTER COLOR:</p>
+                        <input  className='column' onChange={(e) => this.handleTripColor(e.target.value)} value={this.state.trip_color} type='color' />
+                        <button onClick={(e) => this.handleClick(e)} >CREATE NEW TRIP</button>
                     </form>
                 </div>
             </div>
-
-
         )
     }
 }
