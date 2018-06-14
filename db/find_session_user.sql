@@ -1,2 +1,2 @@
 SELECT * FROM wwusers
-WHERE id = $1; 
+WHERE user_id = $1; 

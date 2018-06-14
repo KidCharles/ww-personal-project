@@ -100,7 +100,7 @@ app.get('/auth/user', (req, res) => {
 
 
 //endpoints:
-app.get('/insta', ctrl.getInsta)
+app.get('/api/insta', ctrl.getInsta)
 app.get('/api/trips', ctrl.getTrips)
 app.post('/addtrip', ctrl.addTrip)
 app.delete('/api/trip/:id', ctrl.deleteTrip)

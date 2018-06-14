@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getTrips } from '../../ducks/reducer';
 import Nav from '../Nav/Nav'
 // import Trip from './Trip'
 import axios from 'axios';
 import '../Dashboard/Dashboard.css';
+
 
 
 import '../../App.css';
@@ -14,15 +16,13 @@ class Trips extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            trips: []
+            // trips: [] DONT DO THIS!! _- mason
         }
     }
 
     componentDidMount() {
         axios.get('/api/trips').then((res) => {
-            this.setState({
-                trips: res.data
-            })
+            this.props.getTrips(res.data);
         })
     }
 
@@ -40,7 +40,7 @@ class Trips extends Component {
     render() {
         //mapped over props.trips
         //pss {e} to trip.. construct the look of the trip in trip JS
-        let mappedTrips = this.state.trips.map((e, i) => {
+        let mappedTrips = this.props.trips.map((e, i) => {
             return (
                 <div key={e.trips_id} style={{ "backgroundColor": e.trip_color }} className='trips column' >
                     <div>
@@ -71,4 +71,4 @@ function mapStateToProps(state) {
 
     }
 }
-export default connect(mapStateToProps)(Trips);
+export default connect(mapStateToProps, {getTrips})(Trips);

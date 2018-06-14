@@ -13,16 +13,17 @@ class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            insta: []
+            insta: [],
             // trips:[],
             // gear: []
         }
     }
 
     componentDidMount() {
-        axios.get('/insta').then(res => {
+        axios.get('/api/insta').then(res => {
             this.setState({ insta: res.data })
         })
+        //make another axios call to 
     }
 
     handleChange(val) {
@@ -41,7 +42,7 @@ class Dashboard extends Component {
 
     render() {
         let mappedphotos = this.state.insta.map((e, i) =>
-            <div key={i}>
+            <div key={"inst"+i}>
                 <div className='instapic ' >
                     <img alt='' src={e} />
                 </div>
@@ -50,8 +51,8 @@ class Dashboard extends Component {
 
         let mappedTrips = this.props.trips.map((e, i) => {
             return (
-                <Link to='/trips' >
-                    <div key={i} style={{ "backgroundColor": e.trip_color }} className='mappedtrip' >
+                <Link to='/trips' key={"trips"+i}>
+                    <div  style={{ "backgroundColor": e.trip_color }} className='mappedtrip' >
                         {/* add color input on admin trip updater */}
                         {e.trip_img}
                         {e.trip_name}
@@ -62,8 +63,8 @@ class Dashboard extends Component {
 
         let mappedGear = this.props.gear.map((e, i) => {
             return (
-                <Link to='/trips' >
-                    <div key={i} >
+                <Link to='/trips' key={"gear"+i} >
+                    <div  >
                         {e.gear_img}
                     </div>
                 </Link>

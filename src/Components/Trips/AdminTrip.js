@@ -61,8 +61,9 @@ class AdminTrip extends Component {
             alert('please fill out form correctly')
             :
             axios.post('/addtrip', body).then((trips) => {
-                this.setState({ trips: trips.data });
-                this.props.addTrip(this.state.trips);
+                // this.setState({ trips: trips.data });
+                console.log(trips)
+                this.props.addTrip(trips.data);
                 if (trips.status === 200) {
                     console.log(trips)
                     this.setState({
