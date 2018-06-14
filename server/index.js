@@ -53,12 +53,11 @@ passport.use(
             let { id, displayName, picture } = profile;
             db.find_user([id]).then(user => {
                 //data will always be returned in an array
-                console.log(user[0], profile, id)
                 if (user[0]) {
-                    done(null, user[0].id);
+                    done(null, user[0].user_id);
                 } else {
                     db.create_user([ displayName, picture, id]).then((createdUser) => {
-                        done(null, createdUser[0].id)
+                        done(null, createdUser[0].user_id)
                     })
                 }
             });
