@@ -26,22 +26,32 @@ class Trips extends Component {
         })
     }
 
+    deleteTrip(id) {
+        console.log(id)
+        axios.delete(`/api/trip/${id}`).then(res => {
+            this.setState({
+                trips: res.data
+            })
+        })
+    }
+
+
     addToCart() { }
+
     render() {
-        console.log(this.state)
         //mapped over props.trips
         //pss {e} to trip.. construct the look of the trip in trip JS
         let mappedTrips = this.state.trips.map((e, i) => {
             return (
-                <div key={i} style={{ "backgroundColor": e.trip_color }} className='trips' >
+                <div key={e.trips_id} style={{ "backgroundColor": e.trip_color }} className='trips column' >
                     <div>
                         <h1>coordinates</h1>
-                        {/* amazon s3/ cloudinary */}
+                        <h1>{e.trip_name}</h1>
                         <img src={e.trip_img} className='' alt='trip pic' />
-                        <h1>coordinates</h1>
                         <h1>Backpacker Package</h1>
                         <h1>{e.trip_short_desc}</h1>
-                        <h1>{e.trip_price}</h1>
+                        <h1>${e.trip_price}</h1>
+                        <button onClick={() => { this.deleteTrip(e.trips_id) }} >X</button>
                     </div>
                 </div>
             )

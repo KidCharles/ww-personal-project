@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addTrip } from '../../ducks/reducer';
+import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import Nav from '../Nav/Nav'
 import './Trip.css';
@@ -25,9 +26,9 @@ class AdminTrip extends Component {
         this.setState({ trip_name: val })
     }
 
-    handleTripImg(val) {
-        this.setState({ trip_img: val })
-    }
+    //  handleTripImg(val) {
+    //     this.setState({ trip_img: val })
+    // }
 
     handleLongDesc(val) {
         this.setState({ trip_long_desc: val })
@@ -45,8 +46,8 @@ class AdminTrip extends Component {
         this.setState({ trip_color: val })
     }
 
-    handleClick() {
-
+    handleClick(e) {
+        e.preventDefault()
         let body = {
             trip_name: this.state.trip_name,
             trip_img: this.state.trip_img,
@@ -60,42 +61,93 @@ class AdminTrip extends Component {
             alert('please fill out form correctly')
             :
             axios.post('/addtrip', body).then((trips) => {
-                // make sure this endpoint sends back an updated trips list
-                // then update trips on redux state 
-                this.setState({trips: trips.data})
-
-                this.props.addTrip(this.state.trips)
+                this.setState({ trips: trips.data });
+                this.props.addTrip(this.state.trips);
+                if (trips.status === 200) {
+                    console.log(trips)
+                    this.setState({
+                        trip_name: '',
+                        trip_img: '',
+                        trip_long_desc: '',
+                        trip_short_desc: '',
+                        trip_price: 0,
+                        trip_color: ''
+                    }, () => alert('Succesfully Added'))
+                }
             })
+    }
+
+    handleDrop = files => {
+        // Push all the axios request promise into a single array
+        const uploaders = files.map(file => {
+            // Initial FormData
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("tags", `codeinfuse, medium, gist`);
+            formData.append("upload_preset", "b0nx2kyj"); // Replace the preset name with your own
+            formData.append("api_key", "822525438173656"); // Replace API key with your own Cloudinary key
+            formData.append("timestamp", (Date.now() / 1000) | 0);
+
+            // Make an AJAX upload request using Axios (replace Cloudinary URL below with your own)
+            return axios.post("https://api.cloudinary.com/v1_1/wayfaringworld/image/upload", formData, {
+                headers: { "X-Requested-With": "XMLHttpRequest" },
+            }).then(response => {
+                const data = response.data;
+                const fileURL = data.secure_url // You should store this URL for future references in your app
+                // console.log(data);
+                //put this into my data base
+                this.setState({ trip_img: fileURL })
+            })
+        });
+
+        // Once all the files are uploaded 
+        // axios.all(uploaders).then(() => {
+        //     // ... perform after upload is successful operation
+
+        // });
     }
 
     render() {
         return (
-            <div className='backgroundPhoto' >
+            <div>
                 <Nav />
-                <form className='mappedtrip column' >
-                    <p>TRIP NAME:</p>
+                <div className='backgroundPhoto column' >
+                    <form className='mappedtrip column' >
+                        <p>TRIP NAME:</p>
 
-                    <input type='text' className='column' onChange={(e) => this.handleTripName(e.target.value)} />
-                    <p>TRIP ICON:</p>
+                        <input value={this.state.trip_name} type='text' className='column' onChange={(e) => this.handleTripName(e.target.value)} />
+                        <p>TRIP ICON:</p>
 
-                    {/* image URL */}
-                    <input type='text' className='column' onChange={(e) => this.handleTripImg(e.target.value)} />
-                    <p>LONG DESCRIPTION:</p>
+                        <Dropzone
+                            onDrop={this.handleDrop}
+                            multiple
+                            accept="image/*"
+                        // style={styles.dropzone}  make a var that is an object, that has styles in it
+                        >
+                            <p>Drop your files or click here to upload</p>
+                        </Dropzone>
 
-                    <input type='text' className='column' onChange={(e) => this.handleLongDesc(e.target.value)} />
-                    <p>SHORT DESCRIPTION:</p>
+                        {/* image URL, DROPZONE GOES, UPLAD FILE THING HERE */}
+                        <input value={this.state.trip_img} type='text' className='column' onChange={(e) => this.handleTripImg(e.target.value)} />
+                        <p>LONG DESCRIPTION:</p>
 
-                    <input type='text' className='column' onChange={(e) => this.handleShortDesc(e.target.value)} />
-                    <p>TRIP PRICE:</p>
+                        <input value={this.state.trip_long_desc} type='text' className='column' onChange={(e) => this.handleLongDesc(e.target.value)} />
+                        <p>SHORT DESCRIPTION:</p>
 
-                    <input type='number' className='column' onChange={(e) => this.handleTripPrice(e.target.value)} />
-                    <p>COLOR:</p>
+                        <input value={this.state.trip_short_desc} type='text' className='column' onChange={(e) => this.handleShortDesc(e.target.value)} />
+                        <p>TRIP PRICE:</p>
 
-                    <input type='color' className='column' onChange={(e) => this.handleTripColor(e.target.value)} />
-                    <br />
-                    <button onClick={()=> this.handleClick()} >CREAT NEW TRIP</button>
-                </form>
+                        <input value={this.state.trip_price} type='number' className='column' onChange={(e) => this.handleTripPrice(e.target.value)} />
+                        <p>COLOR:</p>
+
+                        <input value={this.state.trip_color} type='color' className='column' onChange={(e) => this.handleTripColor(e.target.value)} />
+                        <br />
+                        <button onClick={(e) => this.handleClick(e)} >CREAT NEW TRIP</button>
+                    </form>
+                </div>
             </div>
+
+
         )
     }
 }

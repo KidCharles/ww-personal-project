@@ -36,7 +36,21 @@ module.exports = {
         db.add_trip([trip_name, trip_img, trip_long_desc, trip_short_desc, trip_price, trip_color])
             .then(trips => res.status(200).send(trips))
             .catch(() => res.status(500).send())
-    }
+    },
+
+    deleteTrip: (req, res) => {
+        const db = req.app.get('db');
+        console.log(req.parms)
+        const { id } = req.params
+        console.log(req.params)
+        //YOU NEED TO SEND INFO IN SQUARE BRACKETS!!
+        db.delete_trip([id])
+            .then(trips => res.status(200).send(trips))
+            .catch((err) => {
+                console.log(err)
+                res.status(500).send()
+            })
+    },
 
 
 }

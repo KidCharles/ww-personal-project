@@ -35,6 +35,8 @@ app.use(checkUserSession)
 app.get('/insta', ctrl.getInsta)
 app.get('/api/trips', ctrl.getTrips)
 app.post('/addtrip', ctrl.addTrip)
+app.delete('/api/trip/:id', ctrl.deleteTrip)
+
 
 // app.post('/login', ctrl.loginUser)
 // app.post('/register', ctrl.registerUser)

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import logo from '../Assets/ww_logo_white.svg';
 import background from '../Assets/login_background.svg';
 import './Login.css';
+import axios from 'axios';
 // import ''
 
 //import { addUser } from '../ducks/reducer';
@@ -31,7 +32,14 @@ export default class Login extends Component {
 
     }
 
-    login() { }
+    login() {
+        const { username, password } = this.state
+        if (username && password) {
+            axios.post('/api/login', { username: username.toLowerCase(), password: password }).then(res => {
+
+            })
+        }
+    }
 
     register() { }
 
