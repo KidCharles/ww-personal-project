@@ -33,6 +33,7 @@ const GET_TRIPS = 'GET_TRIPS';
 const DELETE_TRIP = 'DELETE_TRIP';
 const GET_GEAR = 'GET_GEAR';
 const ADD_GEAR = 'ADD_GEAR';
+const DELETE_GEAR = 'DELETE_GEAR';
 
 
 
@@ -42,17 +43,19 @@ const ADD_GEAR = 'ADD_GEAR';
 
 export default function reducer(state = initial_state, action) {
     switch (action.type) {
+        case GET_USER_DATA + '_FULFILLED':
+            return Object.assign({}, state, { user: action.payload })
         case ADD_TRIP:
             return Object.assign({}, state, { trips: action.payload })
         case GET_TRIPS:
             return Object.assign({}, state, { trips: action.payload })
-        case GET_USER_DATA + '_FULFILLED':
-            return Object.assign({}, state, { user: action.payload })
         case DELETE_TRIP + '_FULFILLED':
             return Object.assign({}, state, { trips: action.payload })
         case GET_GEAR:
             return Object.assign({}, state, { gear: action.payload })
         case ADD_GEAR:
+            return Object.assign({}, state, { gear: action.payload })
+        case DELETE_GEAR + '_FULFILLED':
             return Object.assign({}, state, { gear: action.payload })
         default:
             return state;
@@ -61,18 +64,18 @@ export default function reducer(state = initial_state, action) {
 
 // 4.) ACTION CREATORS
 
-export function addTrip(trip) {
-    return {
-        type: ADD_TRIP,
-        payload: trip
-    }
-}
-
 export function getUser() {
     let userData = axios.get('/auth/user').then(res => res.data);
     return {
         type: GET_USER_DATA,
         payload: userData
+    }
+}
+
+export function addTrip(trip) {
+    return {
+        type: ADD_TRIP,
+        payload: trip
     }
 }
 
@@ -101,6 +104,14 @@ export function getGear(gear) {
 export function addGear(gear) {
     return {
         type: ADD_GEAR,
+        payload: gear
+    }
+}
+
+export function deleteGear(id) {
+    let gear = axios.delete(`/api/deleteGear/${id}`).then(res => res.data)
+    return {
+        type: DELETE_GEAR,
         payload: gear
     }
 }

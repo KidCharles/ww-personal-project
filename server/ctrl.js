@@ -64,4 +64,15 @@ module.exports = {
             .catch(() => res.status(500).send())
     },
 
+    deleteGear: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params
+        //YOU NEED TO SEND INFO IN SQUARE BRACKETS!!
+        db.delete_gear([id])
+            .then(gear => res.status(200).send(gear))
+            .catch((err) => {
+                console.log(err)
+                res.status(500).send()
+            })
+    },
 }

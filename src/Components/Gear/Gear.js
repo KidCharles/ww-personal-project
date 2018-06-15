@@ -23,7 +23,7 @@ class Gear extends Component {
     render() {
         let mappedGear = this.props.gear.map((e, i) => {
             return (
-                <div key={e.gear_id} className='' >
+                <div key={e.gear_id} className='instapic ' >
                     <img src={e.gear_img} className='' alt='Wayfaring World Product' />
                     <h1>{e.gear_name}</h1>
                 </div>

@@ -104,6 +104,7 @@ app.post('/addtrip', ctrl.addTrip)
 app.delete('/api/deleteTrip/:id', ctrl.deleteTrip)
 app.get('/api/gear', ctrl.getGear)
 app.post('/addGear', ctrl.addGear)
+app.delete('/api/deleteGear/:id', ctrl.deleteGear)
 
 const port = 3030
 app.listen(port, () => console.log(`server is Glistening on port ${port}`))

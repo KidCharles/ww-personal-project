@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addGear, getGear } from '../../ducks/reducer';
+import { addGear, getGear, deleteGear } from '../../ducks/reducer';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import Nav from '../Nav/Nav'
@@ -108,8 +108,8 @@ class AdminTrip extends Component {
         let mappedGear = this.props.gear.map((e, i) => {
             return (
                 <div key={e.gear_id} className=' column instapic' >
-                    <button onClick={() => { this.props.deleteTrip(e.trips_id) }}>Xsdfsdfsdfsdf</button>
                     <img src={e.gear_img} className='' alt='Wayfaring World Product' />
+                    <button onClick={() => { this.props.deleteGear(e.gear_id) }}>X</button>
                     <p>{e.gear_name}</p>
                     <p>${e.gear_price}</p>
                     <p>{e.gear_long_desc}</p>
@@ -156,4 +156,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { addGear, getGear })(AdminTrip);
+export default connect(mapStateToProps, { addGear, getGear, deleteGear })(AdminTrip);
