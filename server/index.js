@@ -101,8 +101,9 @@ app.get('/auth/user', (req, res) => {
 app.get('/api/insta', ctrl.getInsta)
 app.get('/api/trips', ctrl.getTrips)
 app.post('/addtrip', ctrl.addTrip)
-// app.delete('/api/trip/:id', ctrl.deleteTrip)
+app.delete('/api/deleteTrip/:id', ctrl.deleteTrip)
 app.get('/api/gear', ctrl.getGear)
+app.post('/addGear', ctrl.addGear)
 
 const port = 3030
 app.listen(port, () => console.log(`server is Glistening on port ${port}`))

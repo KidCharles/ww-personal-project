@@ -21,13 +21,13 @@ class Trips extends Component {
         })
     }
 
-    deleteTrip(id) {
-        alert('Delete button needs to be fixed')
-        // axios.delete(`/api/trip/${id}`).then(res => {
-        // axios.delete('/api/deleteTrip').then(res => {
-        //     this.props.deleteTrip(res.data);
-        // })
-    }
+    // deleteTrip(id) {
+    //     // alert('Delete button needs to be fixed')
+    //     axios.delete(`/api/trip/${id}`).then(res => {
+    //     // axios.delete('/api/deleteTrip').then(res => {
+    //     //     this.props.deleteTrip(res.data);
+    //     // })
+    // }
     addToCart() { }
 
     render() {
@@ -49,7 +49,7 @@ class Trips extends Component {
                             <h1>{e.trip_short_desc}</h1>
                             <h1>${e.trip_price}</h1>
                         </div>
-                        <button onClick={() => { this.deleteTrip(e.trips_id) }}>X</button>
+                        <button onClick={() => { this.props.deleteTrip(e.trips_id) }}>X</button>
                     </div>
                 </div>
             )

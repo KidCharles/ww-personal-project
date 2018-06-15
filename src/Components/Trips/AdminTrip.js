@@ -4,9 +4,6 @@ import { addTrip } from '../../ducks/reducer';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import Nav from '../Nav/Nav'
-import './Trip.css';
-import '../../App.css';
-import '../Dashboard/Dashboard.css';
 
 
 class AdminTrip extends Component {
@@ -111,7 +108,7 @@ class AdminTrip extends Component {
             <div>
                 <Nav />
                 <div className='backgroundPhoto column' >
-                    <form className='mappedtrip column' >
+                    <form className='column' >
                         <p>ENTER TRIP NAME:</p>
                         <input className='column' onChange={(e) => this.handleTripName(e.target.value)} value={this.state.trip_name} type='text'  />
                         <p>ENTER TRIP ICON:</p>

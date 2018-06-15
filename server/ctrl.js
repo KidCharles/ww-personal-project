@@ -57,6 +57,12 @@ module.exports = {
             .then(gear => res.status(200).send(gear))
             .catch(() => res.status(500).send())
     },
-
+    addGear: (req, res) => {
+        const db = req.app.get('db');
+        const {gear_name, gear_img, gear_long_desc, gear_short_desc, gear_price} = req.body
+        db.add_gear([gear_name, gear_img, gear_long_desc, gear_short_desc, gear_price])
+            .then(gear => res.status(200).send(gear))
+            .catch(() => res.status(500).send())
+    },
 
 }

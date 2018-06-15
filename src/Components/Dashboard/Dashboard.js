@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getTrips, deleteTrip } from '../../ducks/reducer';
+import { getTrips, getGear } from '../../ducks/reducer';
 import axios from 'axios';
 import Nav from '../Nav/Nav';
 // import Gear from '../Gear/Gear';
@@ -26,6 +26,9 @@ class Dashboard extends Component {
         })
         axios.get('/api/trips').then((res) => {
             this.props.getTrips(res.data);
+        })
+        axios.get('/api/gear').then((res) => {
+            this.props.getGear(res.data);
         })
     }
 
@@ -70,8 +73,8 @@ class Dashboard extends Component {
         let mappedGear = this.props.gear.map((e, i) => {
             return (
                 <Link to='/gear' key={"gear" + i} >
-                    <div  >
-                        {e.gear_img}
+                    <div className='instapic column' >
+                        <img src={e.gear_img} className='row' alt='pictures of WW products' />
                     </div>
                 </Link>
             )
@@ -82,7 +85,9 @@ class Dashboard extends Component {
                 <Nav />
                 <div className='backgroundPhoto' >
                     <h1 className='title'>Gear</h1>
-                    {mappedGear}
+                    <div  className='row'>
+                        {mappedGear}
+                    </div>
                     <h1 className='title'>Trips</h1>
                     <div className='row'>
                         {mappedTrips}
@@ -105,4 +110,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getTrips })(Dashboard);
+export default connect(mapStateToProps, { getTrips, getGear })(Dashboard);

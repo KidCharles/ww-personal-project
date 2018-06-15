@@ -11,6 +11,7 @@ import AdminTrip from './Components/Trips/AdminTrip';
 // import Cart from './Components/Cart/Cart';
 import Blog from './Components/Blog/Blog';
 import About from './Components/About/About';
+import Gear_admin from './Components/Gear/Gear_admin';
 
 //this is setting up our routes, need EXACT on the 'home'
 export default (
@@ -20,6 +21,7 @@ export default (
         <Route path='/gear' component={Gear} />
         <Route path='/trip' component={Trips} />
         <Route path='/admin' component={AdminTrip} />
+        <Route path='/gearadmin' component={Gear_admin} />
         {/* <Route path='/cart' component={Cart} /> */}
         <Route path='/blog' component={Blog} />
         <Route path='/about' component={About} />
