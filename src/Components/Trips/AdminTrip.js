@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTrip } from '../../ducks/reducer';
+import { addTrip, getTrips, deleteTrip } from '../../ducks/reducer';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import Nav from '../Nav/Nav'
@@ -17,6 +17,12 @@ class AdminTrip extends Component {
             trip_price: 0,
             trip_color: '',
         }
+    }
+
+    componentDidMount() {
+        axios.get('/api/trips').then((res) => {
+            this.props.getTrips(res.data);
+        })
     }
 
     handleTripName(val) {
@@ -104,6 +110,27 @@ class AdminTrip extends Component {
         // });
     }
     render() {
+        let mappedTrips = this.props.trips.map((e, i) => {
+            return (
+                <div key={e.trips_id} style={{ "backgroundColor": e.trip_color }} className='trips' >
+                    <div className='row tripBanner'>
+                        <div className='row coord'>
+                            <h1>coordinates</h1>
+                            <div className='column coord' >
+                                <img src={e.trip_img} className='' alt='trip pic' />
+                                <h1>{e.trip_name}</h1>
+                            </div>
+                        </div>
+                        <div className='column coord' >
+                            <h1>Backpacker Package</h1>
+                            <h1>{e.trip_short_desc}</h1>
+                            <h1>${e.trip_price}</h1>
+                        </div>
+                        <button onClick={() => { this.props.deleteTrip(e.trips_id) }}>DELETE</button>
+                    </div>
+                </div>
+            )
+        })
         return (
             <div>
                 <Nav />
@@ -130,10 +157,20 @@ class AdminTrip extends Component {
                         <input  className='column' onChange={(e) => this.handleTripColor(e.target.value)} value={this.state.trip_color} type='color' />
                         <button onClick={(e) => this.handleClick(e)} >CREATE NEW TRIP</button>
                     </form>
+
+                    <div className='row inventory' >
+                        {mappedTrips}
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-export default connect(null, { addTrip })(AdminTrip);
+function mapStateToProps(state) {
+    return {
+        trips: state.trips
+    }
+}
+
+export default connect(mapStateToProps, { addTrip, getTrips, deleteTrip })(AdminTrip);

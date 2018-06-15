@@ -11,24 +11,15 @@ class Trips extends Component {
     //cahnge to functional
     constructor(props) {
         super(props)
-        this.state = {
-            // trips: [] DONT DO THIS!! _- mason
-        }
     }
+
     componentDidMount() {
         axios.get('/api/trips').then((res) => {
             this.props.getTrips(res.data);
         })
     }
 
-    // deleteTrip(id) {
-    //     // alert('Delete button needs to be fixed')
-    //     axios.delete(`/api/trip/${id}`).then(res => {
-    //     // axios.delete('/api/deleteTrip').then(res => {
-    //     //     this.props.deleteTrip(res.data);
-    //     // })
-    // }
-    addToCart() { }
+    // addToCart() { }
 
     render() {
         //mapped over props.trips
@@ -49,7 +40,6 @@ class Trips extends Component {
                             <h1>{e.trip_short_desc}</h1>
                             <h1>${e.trip_price}</h1>
                         </div>
-                        <button onClick={() => { this.props.deleteTrip(e.trips_id) }}>X</button>
                     </div>
                 </div>
             )

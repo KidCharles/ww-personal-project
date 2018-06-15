@@ -109,7 +109,7 @@ class AdminTrip extends Component {
             return (
                 <div key={e.gear_id} className=' column instapic' >
                     <img src={e.gear_img} className='' alt='Wayfaring World Product' />
-                    <button onClick={() => { this.props.deleteGear(e.gear_id) }}>X</button>
+                    <button onClick={() => { this.props.deleteGear(e.gear_id) }}>DELETE</button>
                     <p>{e.gear_name}</p>
                     <p>${e.gear_price}</p>
                     <p>{e.gear_long_desc}</p>
