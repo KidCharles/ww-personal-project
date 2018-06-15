@@ -64,13 +64,15 @@ export default function reducer(state = initial_state, action) {
 
 // 4.) ACTION CREATORS
 
-export function getUser() {
-    let userData = axios.get('/auth/user').then(res => res.data);
-    return {
-        type: GET_USER_DATA,
-        payload: userData
-    }
-}
+// export function getUser() {
+//     //this endpoint is in the index
+//     let userData = axios.get('/auth/user').then(res => res.data);
+//     console.log('OVER 9000!')        
+//     return {
+//         type: GET_USER_DATA,
+//         payload: userData
+//     }
+// }
 
 export function addTrip(trip) {
     return {

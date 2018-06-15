@@ -8,35 +8,8 @@ export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: '',
-            password: '',
-            error: '',
-            loggedIn: ''
         }
     }
-
-    // handleUsernameChange(val) {
-    //     this.setState({ username: val })
-    // }
-
-    // handlePasswordChange(val) {
-    //     this.setState({ password: val })
-    // }
-
-    // handleAuthClick() {
-
-    // }
-
-    // login() {
-    //     const { username, password } = this.state
-    //     if (username && password) {
-    //         axios.post('/api/login', { username: username.toLowerCase(), password: password }).then(res => {
-
-    //         })
-    //     }
-    // }
-
-    register() { }
 
     render() {
         return (

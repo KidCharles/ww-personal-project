@@ -34,6 +34,7 @@ app.use(session({
 }))
 
 // app.use(checkUserSession)
+
 // AUTH0--------------------------------------------------
 app.use(passport.initialize());
 app.use(passport.session());
@@ -50,14 +51,18 @@ passport.use(
         (accessToken, refreshToken, extraParams, profile, done) => {
             //query our db here
             const db = app.get("db");
+
             let { id, displayName, picture } = profile;
             db.find_user([id]).then(user => {
                 //data will always be returned in an array
+                
                 if (user[0]) {
-                    done(null, user[0].user_id);
+                    done(null, {userId: user[0].user_id});
+                    //whatever the second argument is here will be put on req.user
+                    //build an object litteral to pick what to put on req.user, this 
                 } else {
                     db.create_user([ displayName, picture, id]).then((createdUser) => {
-                        done(null, createdUser[0].user_id)
+                        done(null, {userId: createdUser[0].user_id})
                     })
                 }
             });
@@ -66,36 +71,58 @@ passport.use(
 );
 
 passport.serializeUser((primaryKeyId, done) => {
+    
     done(null, primaryKeyId);
     //the data in {profile} up above is stored in the session store
 });
 passport.deserializeUser((primaryKeyId, done) => {
     // done(null, primaryKeyId);
-    app.get("db").find_session_user([primaryKeyId]).then(user => {
+    app.get("db").find_session_user([primaryKeyId.userId]).then(user => {
         done(null, user[0]);
     })
     //this is called as middleware, it goes to the session store, grabs {profile} or any value tied to that session, and passes it into the function //runs after somoene has logged in 
     //gets data from session store and puts data on *****req.user
+
+    //USE req.user.user_id to check if admin
 });
+
 
 // AUTH0--------------------------------------------------
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/'
-    //you can add failureRedirect, or connect
+    successRedirect: 'http://localhost:3000/#/dash',
+    failureRedirect: 'http://localhost:3000/#/'
 }))
 
-app.get('/auth/logout', (req, res) => {
-    req.logOut();
-    res.redirect('http://localhost:3000')
-})
+// app.get('/auth/logout', (req, res) => {
+//     req.logOut();
+//     res.redirect('http://localhost:3000')
+// })
+
+
+//this is checking user info
 app.get('/auth/user', (req, res) => {
-    if (req.user) {
+    // console.log(req.user)    
+    if (req.user.is_admin === true) {
         res.status(200).send(req.user);
     } else {
         res.status(401).send('Nice try')
     }
 })
+
+app.get('/auth/logout', (req, res) => {
+    req.logOut();
+    return res.redirect(`https://${DOMAIN}/v2/logout?returnTo=http://localhost:3000`);
+  })
+
+// app.get('/auth/me', (req, res, next) => {
+//     if (!req.user) {
+//       return res.status(401).send(false);
+//     } else {
+//       return res.status(200).send(req.user);
+//     }
+//   })
+
 
 //endpoints:
 app.get('/api/insta', ctrl.getInsta)
