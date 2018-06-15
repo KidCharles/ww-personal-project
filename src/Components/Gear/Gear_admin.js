@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addGear } from '../../ducks/reducer';
+import { addGear, getGear } from '../../ducks/reducer';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import Nav from '../Nav/Nav'
 import '../Dashboard/Dashboard.css';
+import './Gear.css'
 
 
 class AdminTrip extends Component {
@@ -18,6 +19,13 @@ class AdminTrip extends Component {
             gear_price: 0
         }
     }
+
+    componentDidMount() {
+        axios.get('/api/gear').then((res) => {
+            this.props.getGear(res.data);
+        })
+    }
+
 
     handleGearName(val) {
         this.setState({ gear_name: val })
@@ -95,7 +103,20 @@ class AdminTrip extends Component {
 
         // });
     }
+
     render() {
+        let mappedGear = this.props.gear.map((e, i) => {
+            return (
+                <div key={e.gear_id} className=' column instapic' >
+                    <button onClick={() => { this.props.deleteTrip(e.trips_id) }}>Xsdfsdfsdfsdf</button>
+                    <img src={e.gear_img} className='' alt='Wayfaring World Product' />
+                    <p>{e.gear_name}</p>
+                    <p>${e.gear_price}</p>
+                    <p>{e.gear_long_desc}</p>
+                    <p>{e.gear_short_desc}</p>
+                </div>
+            )
+        })
         return (
             <div>
                 <Nav />
@@ -120,10 +141,19 @@ class AdminTrip extends Component {
                         <input className='column' onChange={(e) => this.handleGearPrice(e.target.value)} value={this.state.gear_price} type='number' />
                         <button onClick={(e) => this.handleClick(e)} >CLICK TO ADD NEW PRODUCT TO GEAR</button>
                     </form>
+                    <div className='row inventory' >
+                        {mappedGear}
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-export default connect(null, { addGear })(AdminTrip);
+function mapStateToProps(state) {
+    return {
+        gear: state.gear
+    }
+}
+
+export default connect(mapStateToProps, { addGear, getGear })(AdminTrip);

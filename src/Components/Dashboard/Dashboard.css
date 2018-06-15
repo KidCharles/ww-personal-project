@@ -29,3 +29,13 @@
     justify-content: center;
     width:100%;
 }
+
+.gearForm{
+flex-wrap: wrap-reverse;  
+}
+
+.inventory{
+    margin-top: 25%;
+    align-items: center;
+    justify-content: center;
+}

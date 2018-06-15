@@ -39,9 +39,7 @@ module.exports = {
 
     deleteTrip: (req, res) => {
         const db = req.app.get('db');
-        // console.log(req.parms)
         const { id } = req.params
-        console.log(req.params)
         //YOU NEED TO SEND INFO IN SQUARE BRACKETS!!
         db.delete_trip([id])
             .then(trips => res.status(200).send(trips))
@@ -57,6 +55,7 @@ module.exports = {
             .then(gear => res.status(200).send(gear))
             .catch(() => res.status(500).send())
     },
+    
     addGear: (req, res) => {
         const db = req.app.get('db');
         const {gear_name, gear_img, gear_long_desc, gear_short_desc, gear_price} = req.body
