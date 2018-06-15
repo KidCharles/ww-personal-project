@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
+import { connect} from 'react-redux';
+import axios from 'axios';
+
+import { getGear } from '../../ducks/reducer';
 import Nav from '../Nav/Nav';
 import '../Dashboard/Dashboard.css';
 
 
 
 class Gear extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            gear_id: 0,
-            gear_price: 0,
-            gear_pic: '',
-            gear_desc: ''
-            //possible search
-        }
-    }
-
     
-
     addToCart() {
         //
+    }
+
+    componentDidMount() {
+        axios.get('/api/gear').then((res) => {
+            this.props.getTrips(res.data);
+        })
     }
 
     render() {
@@ -32,4 +30,9 @@ class Gear extends Component {
     }
 }
 
-export default Gear;
+function mapStateToProps(state) {
+    return {
+        gear: state.gear
+    }
+}
+export default connect(mapStateToProps, { getGear})(Gear);

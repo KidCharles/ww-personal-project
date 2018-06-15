@@ -79,7 +79,6 @@ passport.deserializeUser((primaryKeyId, done) => {
 });
 
 // AUTH0--------------------------------------------------
-
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/#/'
@@ -98,16 +97,12 @@ app.get('/auth/user', (req, res) => {
     }
 })
 
-
 //endpoints:
 app.get('/api/insta', ctrl.getInsta)
 app.get('/api/trips', ctrl.getTrips)
 app.post('/addtrip', ctrl.addTrip)
-app.delete('/api/trip/:id', ctrl.deleteTrip)
-
-
-// app.post('/login', ctrl.loginUser)
-// app.post('/register', ctrl.registerUser)
+// app.delete('/api/trip/:id', ctrl.deleteTrip)
+app.get('/api/gear', ctrl.getGear)
 
 const port = 3030
 app.listen(port, () => console.log(`server is Glistening on port ${port}`))

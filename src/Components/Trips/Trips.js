@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTrips } from '../../ducks/reducer';
+import { getTrips, deleteTrip } from '../../ducks/reducer';
 import Nav from '../Nav/Nav'
 // import Trip from './Trip'
 import axios from 'axios';
 import '../Dashboard/Dashboard.css';
-
-
-
-import '../../App.css';
 import './Trip.css';
 
 class Trips extends Component {
@@ -19,7 +15,6 @@ class Trips extends Component {
             // trips: [] DONT DO THIS!! _- mason
         }
     }
-
     componentDidMount() {
         axios.get('/api/trips').then((res) => {
             this.props.getTrips(res.data);
@@ -27,14 +22,12 @@ class Trips extends Component {
     }
 
     deleteTrip(id) {
-        console.log(id)
-        axios.delete(`/api/trip/${id}`).then(res => {
-            this.setState({
-                trips: res.data
-            })
-        })
+        alert('Delete button needs to be fixed')
+        // axios.delete(`/api/trip/${id}`).then(res => {
+        // axios.delete('/api/deleteTrip').then(res => {
+        //     this.props.deleteTrip(res.data);
+        // })
     }
-
     addToCart() { }
 
     render() {
@@ -42,15 +35,21 @@ class Trips extends Component {
         //pss {e} to trip.. construct the look of the trip in trip JS
         let mappedTrips = this.props.trips.map((e, i) => {
             return (
-                <div key={e.trips_id} style={{ "backgroundColor": e.trip_color }} className='trips column' >
-                    <div>
-                        <h1>coordinates</h1>
-                        <h1>{e.trip_name}</h1>
-                        <img src={e.trip_img} className='' alt='trip pic' />
-                        <h1>Backpacker Package</h1>
-                        <h1>{e.trip_short_desc}</h1>
-                        <h1>${e.trip_price}</h1>
-                        <button onClick={() => { this.deleteTrip(e.trips_id) }} >X</button>
+                <div key={e.trips_id} style={{ "backgroundColor": e.trip_color }} className='trips' >
+                    <div className='row tripBanner'>
+                        <div className='row coord'>
+                            <h1>coordinates</h1>
+                            <div className='column coord' >
+                                <img src={e.trip_img} className='' alt='trip pic' />
+                                <h1>{e.trip_name}</h1>
+                            </div>
+                        </div>
+                        <div className='column coord' >
+                            <h1>Backpacker Package</h1>
+                            <h1>{e.trip_short_desc}</h1>
+                            <h1>${e.trip_price}</h1>
+                        </div>
+                        <button onClick={() => { this.deleteTrip(e.trips_id) }}>X</button>
                     </div>
                 </div>
             )
@@ -68,7 +67,6 @@ class Trips extends Component {
 function mapStateToProps(state) {
     return {
         trips: state.trips
-
     }
 }
-export default connect(mapStateToProps, {getTrips})(Trips);
+export default connect(mapStateToProps, { getTrips, deleteTrip })(Trips);

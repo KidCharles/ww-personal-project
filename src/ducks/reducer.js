@@ -19,17 +19,19 @@ const initial_state = {
     // trip_price: 0,
     // trip_color: '',
     gear: [],
-    gear_name: '',
-    gear_price: '',
-    gear_img: '',
-    gear_long_desc: '',
-    gear_short_desc: ''
+    // gear_name: '',
+    // gear_price: '',
+    // gear_img: '',
+    // gear_long_desc: '',
+    // gear_short_desc: ''
 }
 
 // 2.) CONST VARIABLES
 const ADD_TRIP = 'ADD_TRIP';
 const GET_USER_DATA = 'GET_USER_DATA';
 const GET_TRIPS = 'GET_TRIPS';
+const DELETE_TRIP = 'DELETE_TRIP';
+const GET_GEAR = 'GET_GEAR';
 
 
 
@@ -44,6 +46,10 @@ export default function reducer(state = initial_state, action) {
             return Object.assign({}, state, { trips: action.payload })
         case GET_USER_DATA + '_FULFILLED':
             return Object.assign({}, state, { user: action.payload })
+        case DELETE_TRIP + '_FULFILLED':
+            return Object.assign({}, state, { trips: action.payload })
+        case GET_GEAR:
+            return Object.assign({}, state, { gear: action.payload })
         default:
             return state;
     }
@@ -67,8 +73,24 @@ export function getUser() {
 }
 
 export function getTrips(trips) {
-      return {
-          type: GET_TRIPS,
-          payload: trips
-      }
-  }
+    return {
+        type: GET_TRIPS,
+        payload: trips
+    }
+}
+
+export function deleteTrip() {
+    console.log('over9000')
+    let trip = axios.delete(`/api/deleteTrip`).then(res => res.data)
+    return {
+        type: DELETE_TRIP,
+        payload: trip
+    }
+}
+
+export function getGear(gear) {
+    return {
+        type: GET_GEAR,
+        payload: gear
+    }
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { getTrips, deleteTrip } from '../../ducks/reducer';
 import axios from 'axios';
 import Nav from '../Nav/Nav';
 // import Gear from '../Gear/Gear';
@@ -23,7 +24,9 @@ class Dashboard extends Component {
         axios.get('/api/insta').then(res => {
             this.setState({ insta: res.data })
         })
-        //make another axios call to 
+        axios.get('/api/trips').then((res) => {
+            this.props.getTrips(res.data);
+        })
     }
 
     handleChange(val) {
@@ -42,7 +45,7 @@ class Dashboard extends Component {
 
     render() {
         let mappedphotos = this.state.insta.map((e, i) =>
-            <div key={"inst"+i}>
+            <div key={"inst" + i}>
                 <div className='instapic ' >
                     <img alt='' src={e} />
                 </div>
@@ -51,11 +54,14 @@ class Dashboard extends Component {
 
         let mappedTrips = this.props.trips.map((e, i) => {
             return (
-                <Link to='/trips' key={"trips"+i}>
-                    <div  style={{ "backgroundColor": e.trip_color }} className='mappedtrip' >
-                        {/* add color input on admin trip updater */}
-                        {e.trip_img}
-                        {e.trip_name}
+                <Link to='/trip' key={"trips" + i}>
+                    <div style={{ "backgroundColor": e.trip_color }} className='instapic column' >
+                        <div>
+                            <img src={e.trip_img} className='tripIcon' alt='trip pic' />
+                        </div>
+                        <div>
+                            {e.trip_name}
+                        </div>
                     </div>
                 </Link>
             )
@@ -63,7 +69,7 @@ class Dashboard extends Component {
 
         let mappedGear = this.props.gear.map((e, i) => {
             return (
-                <Link to='/trips' key={"gear"+i} >
+                <Link to='/gear' key={"gear" + i} >
                     <div  >
                         {e.gear_img}
                     </div>
@@ -78,7 +84,9 @@ class Dashboard extends Component {
                     <h1 className='title'>Gear</h1>
                     {mappedGear}
                     <h1 className='title'>Trips</h1>
-                    {mappedTrips}
+                    <div className='row'>
+                        {mappedTrips}
+                    </div>
                     <h1 className='title'>Insta</h1>
                     <div className='row' >
                         {mappedphotos}
@@ -97,4 +105,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, { getTrips })(Dashboard);

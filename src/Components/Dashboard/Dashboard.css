@@ -15,8 +15,17 @@
 }
 
 .instapic{
+    width: 400px;
+    height: 400px;
     margin: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.tripIcon{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width:100%;
 }

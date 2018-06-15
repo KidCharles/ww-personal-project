@@ -18,7 +18,6 @@ module.exports = {
                 res.status(200).send(images)
             })
             .catch(x => { 
-                console.log(x)
                 res.status(200).send(x) 
             })
     },
@@ -40,7 +39,7 @@ module.exports = {
 
     deleteTrip: (req, res) => {
         const db = req.app.get('db');
-        console.log(req.parms)
+        // console.log(req.parms)
         const { id } = req.params
         console.log(req.params)
         //YOU NEED TO SEND INFO IN SQUARE BRACKETS!!
@@ -50,6 +49,13 @@ module.exports = {
                 console.log(err)
                 res.status(500).send()
             })
+    },
+
+    getGear: (req, res) => {
+        const db = req.app.get('db');
+        db.get_gear()
+            .then(gear => res.status(200).send(gear))
+            .catch(() => res.status(500).send())
     },
 
 

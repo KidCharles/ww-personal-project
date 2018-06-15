@@ -9,6 +9,15 @@
     margin: 2%;
 }
 
+.coord{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}    
+.tripBanner{
+    display: flex;
+    justify-content: space-around;
+}
 /* .mappedtrip{
     display: flex;
     align-items: center;
