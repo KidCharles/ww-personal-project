@@ -17,6 +17,7 @@ class Trips extends Component {
         axios.get('/api/trips').then((res) => {
             this.props.getTrips(res.data);
         })
+     
     }
 
     // addToCart() { }
