@@ -7,6 +7,10 @@ const express = require('express')
     , bodyParser = require('body-parser')
     , massive = require('massive')
     , ctrl = require('./ctrl')
+    , cors = require('cors')
+    // , config =  require('./config')
+    // , stripe = require('stripe')(config.secret_key)
+
 
 //this is middleware that checks if the user has a session on it, if not assigns one
 const checkUserSession = require('./middleware/checkUserSession')
@@ -122,6 +126,55 @@ app.get('/auth/logout', (req, res) => {
 //       return res.status(200).send(req.user);
 //     }
 //   })
+
+
+
+
+
+//STRIPE------------------------------------------------------------------------
+app.post('/api/payment', function(req, res, next){
+    //convert amount to pennies
+    const amountArray = req.body.amount.toString().split('');
+    const pennies = [];
+    for (var i = 0; i < amountArray.length; i++) {
+      if(amountArray[i] === ".") {
+        if (typeof amountArray[i + 1] === "string") {
+          pennies.push(amountArray[i + 1]);
+        } else {
+          pennies.push("0");
+        }
+        if (typeof amountArray[i + 2] === "string") {
+          pennies.push(amountArray[i + 2]);
+        } else {
+          pennies.push("0");
+        }
+          break;
+      } else {
+          pennies.push(amountArray[i])
+      }
+    }
+    const convertedAmt = parseInt(pennies.join(''));
+  
+    const charge = stripe.charges.create({
+    amount: convertedAmt, // amount in cents, again
+    currency: 'usd',
+    source: req.body.token.id,
+    description: 'Test charge from react app'
+  }, function(err, charge) {
+      if (err) return res.sendStatus(500)
+      return res.sendStatus(200);
+    // if (err && err.type === 'StripeCardError') {
+    //   // The card has been declined
+    // }
+  });
+  });
+  
+//STRIPE------------------------------------------------------------------------
+
+
+
+
+
 
 
 //endpoints:
