@@ -8,8 +8,7 @@ const express = require('express')
     , massive = require('massive')
     , ctrl = require('./ctrl')
     , cors = require('cors')
-    // , config =  require('./config')
-    // , stripe = require('stripe')(config.secret_key)
+    , stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 
 //this is middleware that checks if the user has a session on it, if not assigns one
@@ -29,7 +28,7 @@ const app = express()
 massive(CONNECTION_STRING).then(db => { app.set('db', db) })
 
 app.use(bodyParser.json())
-// app.use(cors())
+app.use(cors())
 
 app.use(session({
     secret: SESSION_SECRET,
@@ -171,12 +170,6 @@ app.post('/api/payment', function(req, res, next){
   
 //STRIPE------------------------------------------------------------------------
 
-
-
-
-
-
-
 //endpoints:
 app.get('/api/insta', ctrl.getInsta)
 app.get('/api/trips', ctrl.getTrips)
@@ -185,6 +178,10 @@ app.delete('/api/deleteTrip/:id', ctrl.deleteTrip)
 app.get('/api/gear', ctrl.getGear)
 app.post('/addGear', ctrl.addGear)
 app.delete('/api/deleteGear/:id', ctrl.deleteGear)
+// GET ITEMS FROM USER'S CART
+app.get('/api/cart/:id', ctrl.getCart)
+//DELETE FROM CART AND THE DB
+app.delete('/api/cartDelete/:id', ctrl.deleteCartItem)
 
 const port = 3030
 app.listen(port, () => console.log(`server is Glistening on port ${port}`))

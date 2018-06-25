@@ -5,7 +5,7 @@ require('dotenv').config();
 
 
 module.exports = {
-    
+
     getInsta: (req, res) => {
         const {
             ACCESS_TOKEN
@@ -17,8 +17,8 @@ module.exports = {
                 })
                 res.status(200).send(images)
             })
-            .catch(x => { 
-                res.status(200).send(x) 
+            .catch(x => {
+                res.status(200).send(x)
             })
     },
 
@@ -31,7 +31,7 @@ module.exports = {
 
     addTrip: (req, res) => {
         const db = req.app.get('db');
-        const {trip_name, trip_img, trip_long_desc, trip_short_desc, trip_price, trip_color} = req.body
+        const { trip_name, trip_img, trip_long_desc, trip_short_desc, trip_price, trip_color } = req.body
         db.add_trip([trip_name, trip_img, trip_long_desc, trip_short_desc, trip_price, trip_color])
             .then(trips => res.status(200).send(trips))
             .catch(() => res.status(500).send())
@@ -55,10 +55,10 @@ module.exports = {
             .then(gear => res.status(200).send(gear))
             .catch(() => res.status(500).send())
     },
-    
+
     addGear: (req, res) => {
         const db = req.app.get('db');
-        const {gear_name, gear_img, gear_long_desc, gear_short_desc, gear_price} = req.body
+        const { gear_name, gear_img, gear_long_desc, gear_short_desc, gear_price } = req.body
         db.add_gear([gear_name, gear_img, gear_long_desc, gear_short_desc, gear_price])
             .then(gear => res.status(200).send(gear))
             .catch(() => res.status(500).send())
@@ -75,4 +75,29 @@ module.exports = {
                 res.status(500).send()
             })
     },
+
+    getCart: (req, res, next) => {
+        const db = req.app.get('db');
+        const { id } = req.params
+        db.cart_get_user([id])
+            .then(cart => res.status(200).send(cart))
+            .catch((err) => {
+                console.log(err)
+                res.status(500).send()
+            })
+    },
+
+    deleteCartItem: (req, res, next) => {
+        const db = req.app.get('db');
+        const { id } = req.params
+        //YOU NEED TO SEND INFO IN SQUARE BRACKETS!!
+        db.products_delete([id])
+            .then(cart => res.status(200).send(cart))
+            .catch((err) => {
+                console.log(err)
+                res.status(500).send()
+            })
+    },
+
+
 }
