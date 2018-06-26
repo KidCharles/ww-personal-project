@@ -11,6 +11,7 @@ import Trips from './Components/Trips/Trips';
 import AdminTrip from './Components/Trips/AdminTrip';
 import Blog from './Components/Blog/Blog';
 import About from './Components/About/About';
+import Account from './Components/Account/Account';
 import Gear_admin from './Components/Gear/Gear_admin';
 import Cart from './Components/Cart/Cart';
 import Checkout from './Components/Checkout/Checkout';
@@ -61,6 +62,7 @@ export default (
 		<Route path='/dash' component={Dashboard} />
 		<Route path='/gear' component={Gear} />
 		<Route path='/trip' component={Trips} />
+		<Route path='/account' component={Account} />
 		<Route path='/cart' component={Cart} />
 		<Route path='/checkout' component={Checkout} />
 		<Route path='/blog' component={Blog} />

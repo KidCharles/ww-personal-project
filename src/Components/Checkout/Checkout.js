@@ -13,7 +13,14 @@ export default class Checkout extends Component {
         }
     }
 
-    on
+    componentDidMount() {
+        // let amount = this.props.location.query.quantity
+        // this.setState({ price: amount })
+    }
+
+    onPurchaseConfirmation() {
+        axios.put('/api/updatePaid/' + this.props.location.query.userId)
+    }
 
     onToken = (token) => {
         token.card = void 0;

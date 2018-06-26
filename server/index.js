@@ -58,14 +58,14 @@ passport.use(
             let { id, displayName, picture } = profile;
             db.find_user([id]).then(user => {
                 //data will always be returned in an array
-                
+
                 if (user[0]) {
-                    done(null, {userId: user[0].user_id});
+                    done(null, { userId: user[0].user_id });
                     //whatever the second argument is here will be put on req.user
                     //build an object litteral to pick what to put on req.user, this 
                 } else {
-                    db.create_user([ displayName, picture, id]).then((createdUser) => {
-                        done(null, {userId: createdUser[0].user_id})
+                    db.create_user([displayName, picture, id]).then((createdUser) => {
+                        done(null, { userId: createdUser[0].user_id })
                     })
                 }
             });
@@ -74,7 +74,7 @@ passport.use(
 );
 
 passport.serializeUser((primaryKeyId, done) => {
-    
+
     done(null, primaryKeyId);
     //the data in {profile} up above is stored in the session store
 });
@@ -113,10 +113,17 @@ app.get('/auth/user', (req, res) => {
     }
 })
 
+app.get('/api/userInfo', (req, res) => {
+    // console.log(req.user)
+        res.status(200).send(req.user);
+})
+
+
+
 app.get('/auth/logout', (req, res) => {
     req.logOut();
     return res.redirect(`https://${DOMAIN}/v2/logout?returnTo=http://localhost:3000`);
-  })
+})
 
 // app.get('/auth/me', (req, res, next) => {
 //     if (!req.user) {
@@ -131,43 +138,43 @@ app.get('/auth/logout', (req, res) => {
 
 
 //STRIPE------------------------------------------------------------------------
-app.post('/api/payment', function(req, res, next){
+app.post('/api/payment', function (req, res, next) {
     //convert amount to pennies
     const amountArray = req.body.amount.toString().split('');
     const pennies = [];
     for (var i = 0; i < amountArray.length; i++) {
-      if(amountArray[i] === ".") {
-        if (typeof amountArray[i + 1] === "string") {
-          pennies.push(amountArray[i + 1]);
+        if (amountArray[i] === ".") {
+            if (typeof amountArray[i + 1] === "string") {
+                pennies.push(amountArray[i + 1]);
+            } else {
+                pennies.push("0");
+            }
+            if (typeof amountArray[i + 2] === "string") {
+                pennies.push(amountArray[i + 2]);
+            } else {
+                pennies.push("0");
+            }
+            break;
         } else {
-          pennies.push("0");
+            pennies.push(amountArray[i])
         }
-        if (typeof amountArray[i + 2] === "string") {
-          pennies.push(amountArray[i + 2]);
-        } else {
-          pennies.push("0");
-        }
-          break;
-      } else {
-          pennies.push(amountArray[i])
-      }
     }
     const convertedAmt = parseInt(pennies.join(''));
-  
+
     const charge = stripe.charges.create({
-    amount: convertedAmt, // amount in cents, again
-    currency: 'usd',
-    source: req.body.token.id,
-    description: 'Test charge from react app'
-  }, function(err, charge) {
-      if (err) return res.sendStatus(500)
-      return res.sendStatus(200);
-    // if (err && err.type === 'StripeCardError') {
-    //   // The card has been declined
-    // }
-  });
-  });
-  
+        amount: convertedAmt, // amount in cents, again
+        currency: 'usd',
+        source: req.body.token.id,
+        description: 'Test charge from react app'
+    }, function (err, charge) {
+        if (err) return res.sendStatus(500)
+        return res.sendStatus(200);
+        // if (err && err.type === 'StripeCardError') {
+        //   // The card has been declined
+        // }
+    });
+});
+
 //STRIPE------------------------------------------------------------------------
 
 //endpoints:
@@ -182,6 +189,12 @@ app.delete('/api/deleteGear/:id', ctrl.deleteGear)
 app.get('/api/cart/:id', ctrl.getCart)
 //DELETE FROM CART AND THE DB
 app.delete('/api/cartDelete/:id', ctrl.deleteCartItem)
+//UPDATE PAID
+app.put('/api/updatePaid/:id', ctrl.updatePaid)
+//GET ADDRESSES FROM SESSIONS
+app.put('/api/getAddress/:id', ctrl.getAddress)
+//UPDATE ADDRESSES FROM SESSIONS
+app.put('/api/updateAddress', ctrl.updateAddress)
 
 const port = 3030
 app.listen(port, () => console.log(`server is Glistening on port ${port}`))

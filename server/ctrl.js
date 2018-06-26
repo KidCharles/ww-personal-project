@@ -91,13 +91,42 @@ module.exports = {
         const db = req.app.get('db');
         const { id } = req.params
         //YOU NEED TO SEND INFO IN SQUARE BRACKETS!!
-        db.products_delete([id])
+        db.cart_delete([id])
             .then(cart => res.status(200).send(cart))
             .catch((err) => {
                 console.log(err)
                 res.status(500).send()
             })
     },
+
+    updatePaid: (req, res, next) => {
+        const db = req.app.get('db');
+        const { id } = req.params
+        db.update_paid([id])
+            .then(res => res.status(200).send(res))
+            .catch((err) => {
+                console.log(err)
+                res.status(500).send()
+            })
+    },
+
+    getAddress: (req, res, next) => {
+        console.log('0ver90000000000000!')
+        if (req.user) {
+            const db = req.app.get('db');
+            const { id } = req.params
+            db.get_address([id])
+                .then(res => res.status(200).send(res))
+        }
+    },
+
+    updateAddress: (req, res, next) => {
+        const { id, street1, street2, city, state, zip } = req.body
+        const db = req.app.get('db');
+        db.update_address([id, street1, street2, city, state, zip])
+            .then(res => res.status(200).send(res))
+    }
+
 
 
 }
