@@ -86,6 +86,27 @@ module.exports = {
                 res.status(500).send()
             })
     },
+    
+    addToCartGear: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params
+        const {user_id} = req.user
+        //add the '+' in front of the req.params ALWAYS if you need the datt to be a number
+        db.add_to_cart_gear([user_id, +id])
+            .then(cart => res.status(200).send(cart))
+            .catch(() => res.status(500).send())
+    },
+
+    addToCartTrips: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params
+        const {user_id} = req.user
+        //add the '+' in front of the req.params ALWAYS if you need the datt to be a number
+        db.add_to_cart_trips([user_id, +id])
+            .then(cart => res.status(200).send(cart))
+            .catch(() => res.status(500).send())
+    },
+
 
     deleteCartItem: (req, res, next) => {
         const db = req.app.get('db');
@@ -103,7 +124,7 @@ module.exports = {
         const db = req.app.get('db');
         const { id } = req.params
         db.update_paid([id])
-            .then(res => res.status(200).send(res))
+            .then(response => res.status(200).send(response))
             .catch((err) => {
                 console.log(err)
                 res.status(500).send()
@@ -111,7 +132,6 @@ module.exports = {
     },
 
     getAddress: (req, res, next) => {
-        console.log('0ver90000000000000!')
         if (req.user) {
             const db = req.app.get('db');
             const { id } = req.params

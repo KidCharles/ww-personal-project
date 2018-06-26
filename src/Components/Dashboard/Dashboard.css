@@ -1,4 +1,6 @@
 .backgroundPhoto{
+    display: flex;
+    flex-wrap: wrap;
     position: relative;
     background: url("../Assets/ww_background.svg");
     width:90%;
@@ -7,6 +9,7 @@
     transform: translateX(-50%);
     align-items: center;
     justify-content: center;
+    min-height: 100vh
 }
 
 .title{

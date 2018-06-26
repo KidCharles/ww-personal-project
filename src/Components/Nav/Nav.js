@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 // import { connect } from 'react-redux';
 import logo from '../Assets/wworld_logo_white.svg';
+import cart from '../Assets/cart.svg';
 import './Nav.css'
 import Drawer from '../Drawer/Drawer'
 //import the action creators
@@ -13,7 +14,8 @@ export default class Nav extends Component {
         super(props)
         this.state = {
             drawerToggle: false,
-            isadmin: false
+            isadmin: false,
+            isloggedIn: false,
         }
         this.handleHam = this.handleHam.bind(this)
     }
@@ -21,16 +23,23 @@ export default class Nav extends Component {
     //comp did mount, check in user is admin, // same enpoint, render new buttons
     //this will come back and change admin to true/false
     componentDidMount() {
-        //axios to check user is admin , if true, set state isadmin:true
-        axios.get("/auth/user").then(res => {
-            this.setState({
-                isadmin: res.data
-            });
-        })
-            .catch(err => {
-                this.setState({ isadmin: false })
 
-            });
+        axios.get('/api/userInfo').then(res => {
+            this.setState({
+                isloggedIn: res.data
+            })
+            //axios to check user is admin , if true, set state isadmin:true
+            axios.get("/auth/user").then(res => {
+                this.setState({
+                    isadmin: res.data
+                });
+            })
+                .catch(err => {
+                    this.setState({ isadmin: false })
+
+                });
+        })
+
     }
 
     handleHam() {
@@ -99,7 +108,26 @@ export default class Nav extends Component {
                                 <Link to='/' >
                                     <div className='menuItem'>Login/Register</div>
                                 </Link>
-                                {/* {checkisAdmin()} */}
+                                {
+                                    this.state.isloggedIn
+                                        ?
+                                        <Link to='/cart' >
+                                            <img src={cart} className='cart' alt='Wayfaring cart logo' />
+                                        </Link>
+                                        :
+                                        null
+                                }
+
+
+                                {
+                                    this.state.isloggedIn
+                                        ?
+                                        <Link to='/account' >
+                                            <p className='account' >My Account</p>
+                                        </Link>
+                                        :
+                                        null
+                                }
 
                             </section>
                         </div>

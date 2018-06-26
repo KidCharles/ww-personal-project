@@ -2,6 +2,9 @@ import '../Dashboard/Dashboard.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Nav from '../Nav/Nav';
+import './Cart.css'
+
 
 class Cart extends Component {
     constructor() {
@@ -15,7 +18,7 @@ class Cart extends Component {
 
     componentDidMount() {
         axios.get('/auth/user').then(user => {
-            console.log(user)
+            // console.log(user)
             if (user.data.username !== undefined) {
                 this.setState({ userId: user.data.user_id })
             }
@@ -52,12 +55,41 @@ class Cart extends Component {
     };
 
     render() {
-        // let mappedCart = this.state.cart.map((cart, i )=> )
+        let mappedCart = this.state.cart.map((e, i) => {
+            return (
+                <div key={i} >
+                    {
+                        this.state.cart[i].gear_name
+                            ?
+                            <div className='gearPicParent' >
+
+                                <img src= { this.state.cart[i].gear_img } />   
+                            
+                             {/* <div style={{ background: `url('${this.state.cart[i].gear_img}')`, width: '200px', height: '200px', backgroundSize: 'cover' }} className='gearpic' ></div> */}
+                                <p>{this.state.cart[i].gear_name}:  ${this.state.cart[i].gear_price}</p>
+                            </div>
+                            :
+                            <div className='gearPicParent' >
+                                <p> {this.state.cart[i].trip_name}:  ${this.state.cart[i].trips_price}</p>
+                            </div> 
+
+                    }
+                    <button className='delete-button' onClick={() => this.deleteCartItem(e.cart_id)}>x</button>
+                </div>
+            )
+        })
+        console.log(this.state)
         return (
             <div>
+                <Nav />
                 <h1>THIS IS YOUR CART </h1>
 
-
+                {mappedCart.length > 0 ?
+                    <div className='gearPhoto'>
+                        {mappedCart}
+                    </div>
+                    : null
+                }
                 <Link to={{ pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } }} >
                     <button className='' >Checkout</button>
                 </Link>

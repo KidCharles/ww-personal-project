@@ -20,7 +20,9 @@ class Trips extends Component {
      
     }
 
-    // addToCart() { }
+    addToCartTrips(id) {
+        axios.post(`/api/addToCartTrips/${id}`).then(alert('added to your cart'))
+    }
 
     render() {
         //mapped over props.trips
@@ -40,6 +42,7 @@ class Trips extends Component {
                             <h1>Backpacker Package</h1>
                             <h1>{e.trip_short_desc}</h1>
                             <h1>${e.trip_price}</h1>
+                            <button type='' className='' onClick={()=> this.addToCartTrips(e.trips_id)}>+</button>
                         </div>
                     </div>
                 </div>

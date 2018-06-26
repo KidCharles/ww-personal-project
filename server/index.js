@@ -195,6 +195,10 @@ app.put('/api/updatePaid/:id', ctrl.updatePaid)
 app.put('/api/getAddress/:id', ctrl.getAddress)
 //UPDATE ADDRESSES FROM SESSIONS
 app.put('/api/updateAddress', ctrl.updateAddress)
+//ADD GEAR TO CART
+app.post('/api/addToCartGear/:id', ctrl.addToCartGear)
+//ADD TRIPS TO CART
+app.post('/api/addToCartTrips/:id', ctrl.addToCartTrips)
 
 const port = 3030
 app.listen(port, () => console.log(`server is Glistening on port ${port}`))

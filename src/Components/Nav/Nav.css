@@ -17,6 +17,17 @@
     transition: border-bottom-color 50ms linear 0s;
 }
 
+/* cart logo */
+.cart{
+    padding-top: 9px;
+    width:25px;
+}
+
+.account{
+    padding-left: 10px;
+}
+
+
 .menuItem:hover{
     border-bottom-color: #FFF;
 }

@@ -11,30 +11,34 @@ import './Gear.css';
 
 class Gear extends Component {
 
-    addToCart() {
-        //
-    }
-
+    
     componentDidMount() {
         axios.get('/api/gear').then((res) => {
             this.props.getGear(res.data);
         })
     }
+    
+    addToCartGear(id) {
+        axios.post(`/api/addToCartGear/${id}`).then(alert('added to your cart'))
+    }
+
 
     render() {
         let mappedGear = this.props.gear.map((e, i) => {
             return (
-                <div key={e.gear_id} className='instapic' >
-                    <img src={e.gear_img} className='' alt='Wayfaring World Product container' />
-                    <p className="bottom-right">{e.gear_price}</p>
-                    <h1>{e.gear_name}</h1>
+                <div key={e.gear_id} className='gearPicParent' >
+                  <div style={{background:`url('${e.gear_img}')` , width:'200px', height:'200px', backgroundSize: 'cover' }} className='gearpic' >
+                    <h2 className="bottom-right">${e.gear_price}</h2>
+                  </div> 
+                    <p>{e.gear_name}</p>
+                    <button type='' className='' onClick={()=> this.addToCartGear(e.gear_id)}>+</button>
                 </div>
             )
         })
         return (
             <div>
                 <Nav />
-                <div className='backgroundPhoto' >
+                <div className='backgroundPhoto gearPhoto' >
                     {/* row wrap */}
                     {mappedGear}
                 </div>
@@ -46,6 +50,7 @@ class Gear extends Component {
 function mapStateToProps(state) {
     return {
         gear: state.gear
+
     }
 }
 export default connect(mapStateToProps, { getGear })(Gear);

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Nav from '../Nav/Nav';
+
 
 class Account extends Component {
     constructor() {
@@ -71,12 +73,14 @@ class Account extends Component {
                 })
             })
         })
+        alert("changes submitted")
     };
 
     render() {
         console.log(this.state)
         return (
             <div>
+                <Nav />
                 <h1>Welcome to your WW Account!</h1>
                 <p>Here you can make changes to your personal information</p>
                 <div>
