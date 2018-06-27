@@ -2,6 +2,9 @@
 const axios = require('axios');
 require('dotenv').config();
 
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+
+
 
 
 module.exports = {
@@ -76,21 +79,18 @@ module.exports = {
             })
     },
 
-    getCart: (req, res, next) => {
+    getCart: (req, res) => {
         const db = req.app.get('db');
         const { id } = req.params
         db.cart_get_user([id])
             .then(cart => res.status(200).send(cart))
-            .catch((err) => {
-                console.log(err)
-                res.status(500).send()
-            })
+            .catch((err) => { res.status(500).send() })
     },
-    
+
     addToCartGear: (req, res) => {
         const db = req.app.get('db');
         const { id } = req.params
-        const {user_id} = req.user
+        const { user_id } = req.user
         //add the '+' in front of the req.params ALWAYS if you need the datt to be a number
         db.add_to_cart_gear([user_id, +id])
             .then(cart => res.status(200).send(cart))
@@ -100,7 +100,7 @@ module.exports = {
     addToCartTrips: (req, res) => {
         const db = req.app.get('db');
         const { id } = req.params
-        const {user_id} = req.user
+        const { user_id } = req.user
         //add the '+' in front of the req.params ALWAYS if you need the datt to be a number
         db.add_to_cart_trips([user_id, +id])
             .then(cart => res.status(200).send(cart))
@@ -108,7 +108,7 @@ module.exports = {
     },
 
 
-    deleteCartItem: (req, res, next) => {
+    deleteCartItem: (req, res) => {
         const db = req.app.get('db');
         const { id } = req.params
         //YOU NEED TO SEND INFO IN SQUARE BRACKETS!!
@@ -145,6 +145,53 @@ module.exports = {
         const db = req.app.get('db');
         db.update_address([id, street1, street2, city, state, zip])
             .then(res => res.status(200).send(res))
+    },
+
+    "stripe": (req, res, next) =>  {
+        //convert amount to pennies
+        // console.log(req)
+        // console.log(req.session)
+
+        const amountArray = req.body.amount.toString().split('');
+        const pennies = [];
+        for (var i = 0; i < amountArray.length; i++) {
+            if (amountArray[i] === ".") {
+                if (typeof amountArray[i + 1] === "string") {
+                    pennies.push(amountArray[i + 1]);
+                } else {
+                    pennies.push("0");
+                }
+                if (typeof amountArray[i + 2] === "string") {
+                    pennies.push(amountArray[i + 2]);
+                } else {
+                    pennies.push("0");
+                }
+                break;
+            } else {
+                pennies.push(amountArray[i])
+            }
+        }
+        const convertedAmt = parseInt(pennies.join(''));
+    
+        const charge = stripe.charges.create({
+            amount: convertedAmt, // amount in cents, again
+            currency: 'usd',
+            source: req.body.token.id,
+            description: 'Test charge from react app'
+        }, function (err, charge) {
+            if (err) return res.sendStatus(500)
+         //YOU CAN ADD EXTRA DB QUERIES
+         console.log(req.params)
+         const db = req.app.get('db');
+         const { id } = req.params
+        //  const { user_id } = req.user
+         db.cart_clear([id])
+         .then(cart =>  res.status(200).send(cart))
+            
+            // if (err && err.type === 'StripeCardError') {
+            //   // The card has been declined
+            // }
+        });
     }
 
 

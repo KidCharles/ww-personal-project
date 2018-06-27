@@ -43,8 +43,6 @@ const DELETE_GEAR = 'DELETE_GEAR';
 
 export default function reducer(state = initial_state, action) {
     switch (action.type) {
-        case GET_USER_DATA + '_FULFILLED':
-            return Object.assign({}, state, { user: action.payload })
         case ADD_TRIP:
             return Object.assign({}, state, { trips: action.payload })
         case GET_TRIPS:

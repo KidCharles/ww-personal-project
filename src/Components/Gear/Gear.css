@@ -18,6 +18,13 @@ align-items: unset;
 
 .bottom-right {
     position: absolute;
-    bottom: 8px;
-    right: 16px;
+    top: 145px;
+    bottom: .05px;
+    right: 8px;
+}
+
+.addToCart{
+    width: 40px;
+    height: 40px;
+    font-size: 30px; 
 }

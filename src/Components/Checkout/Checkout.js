@@ -17,7 +17,7 @@ export default class Checkout extends Component {
             state: '',
             zip: '',
 
-            price: 2500
+            price: 0
         }
     }
 
@@ -32,7 +32,20 @@ export default class Checkout extends Component {
                 currentZip: res.data.zip
             })
         })
+
+
+        let amount = this.props.location.query.quantity
+
+        amount *= 100
+
+        this.setState({
+            price: amount
+        })
     };
+
+    // clearCart(this.state.id){
+        
+    // }
 
     onPurchaseConfirmation() {
         axios.put(`/api/updatePaid/${this.state.id}`)
@@ -40,13 +53,13 @@ export default class Checkout extends Component {
 
     onToken = (token) => {
         token.card = void 0;
-        axios.post('http://localhost:3030/api/payment', { token, amount: this.state.price /* the amount actually charged*/ })
+        axios.post(`http://localhost:3030/api/payment/${this.state.id}`, { token, amount: this.state.price /* the amount actually charged*/ })
             .then(response => {
                 this.onPurchaseConfirmation();
                 this.setState({
                     redirect: true
                 })
-                alert('Thanks for your purchase')
+                
             });
     }
 
@@ -65,7 +78,7 @@ export default class Checkout extends Component {
                     <p>If your address is not correct, please update it on your "Account" page before completing your purchase</p>
                 </section>
 
-                <h1> Your Total is: {this.state.price / 100}.00</h1>
+                <h1> Your Total is: ${this.state.price / 100}.00</h1>
 
                 <StripeCheckout
                     token={this.onToken}

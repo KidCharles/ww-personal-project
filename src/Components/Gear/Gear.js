@@ -31,7 +31,7 @@ class Gear extends Component {
                     <h2 className="bottom-right">${e.gear_price}</h2>
                   </div> 
                     <p>{e.gear_name}</p>
-                    <button type='' className='' onClick={()=> this.addToCartGear(e.gear_id)}>+</button>
+                    <button type='' className='addToCart' onClick={()=> this.addToCartGear(e.gear_id)}>+</button>
                 </div>
             )
         })

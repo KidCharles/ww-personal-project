@@ -28,6 +28,7 @@ class Cart extends Component {
                     this.setState({
                         cart: res.data
                     })
+                    //FIX THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     this.countCart(res.data)
                 })
         })
@@ -37,7 +38,8 @@ class Cart extends Component {
         let amount = 0
         for (let i = 0; i < cart.length; i++) {
             if (!cart[i].paid)
-                amount += cart[i].quantity
+                amount += cart[i].gear_price;
+                // amount += cart[i].trips_price;
         }
         this.setState({ cartAmount: amount })
     };
@@ -55,6 +57,7 @@ class Cart extends Component {
     };
 
     render() {
+        console.log(this.state)
         let mappedCart = this.state.cart.map((e, i) => {
             return (
                 <div key={i} >
@@ -63,22 +66,21 @@ class Cart extends Component {
                             ?
                             <div className='gearPicParent' >
 
-                                <img src= { this.state.cart[i].gear_img } />   
-                            
-                             {/* <div style={{ background: `url('${this.state.cart[i].gear_img}')`, width: '200px', height: '200px', backgroundSize: 'cover' }} className='gearpic' ></div> */}
+                                <img src={this.state.cart[i].gear_img} />
+
+                                {/* <div style={{ background: `url('${this.state.cart[i].gear_img}')`, width: '200px', height: '200px', backgroundSize: 'cover' }} className='gearpic' ></div> */}
                                 <p>{this.state.cart[i].gear_name}:  ${this.state.cart[i].gear_price}</p>
                             </div>
                             :
                             <div className='gearPicParent' >
                                 <p> {this.state.cart[i].trip_name}:  ${this.state.cart[i].trips_price}</p>
-                            </div> 
+                            </div>
 
                     }
                     <button className='delete-button' onClick={() => this.deleteCartItem(e.cart_id)}>x</button>
                 </div>
             )
         })
-        console.log(this.state)
         return (
             <div>
                 <Nav />
