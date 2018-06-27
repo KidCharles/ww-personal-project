@@ -1,5 +1,6 @@
 .gearPicParent{
     margin: 35px 20px;
+
 }
 
 .gearpic{
@@ -7,7 +8,11 @@
 }
 
 .gearPhoto{
-align-items: unset;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: unset;
+    justify-content: center;
+
 }
 
 .container {

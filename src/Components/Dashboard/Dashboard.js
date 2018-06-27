@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getTrips, getGear } from '../../ducks/reducer';
 import axios from 'axios';
+import Slider from "react-slick";
 import Nav from '../Nav/Nav';
-// import Gear from '../Gear/Gear';
-// import Trips from '../Trips/Trips';
 import './Dashboard.css';
-
+import logo from '../Assets/cart.svg'
 
 
 class Dashboard extends Component {
@@ -47,10 +46,20 @@ class Dashboard extends Component {
     }
 
     render() {
+
+        var settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 2,
+            className: 'slideMargin'
+        };
+
         let mappedphotos = this.state.insta.map((e, i) =>
             <div key={"inst" + i}>
                 <div className='instapic ' >
-                    <img alt='' src={e} />
+                    <img className='dashpics' alt='' src={e} />
                 </div>
             </div>
         )
@@ -58,13 +67,11 @@ class Dashboard extends Component {
         let mappedTrips = this.props.trips.map((e, i) => {
             return (
                 <Link to='/trip' key={"trips" + i}>
-                    <div style={{ "backgroundColor": e.trip_color }} className='instapic column' >
-                        <div>
+                    <div style={{ "backgroundColor": e.trip_color }} className='travelpic ' >
+                        <div >
                             <img src={e.trip_img} className='tripIcon' alt='trip pic' />
                         </div>
-                        <div>
-                            {e.trip_name}
-                        </div>
+                        {e.trip_name}
                     </div>
                 </Link>
             )
@@ -73,8 +80,8 @@ class Dashboard extends Component {
         let mappedGear = this.props.gear.map((e, i) => {
             return (
                 <Link to='/gear' key={"gear" + i} >
-                    <div className='instapic column' >
-                        <img src={e.gear_img} className='row' alt='pictures of WW products' />
+                    <div className='instapic' >
+                        <img src={e.gear_img} className='dashpics' alt='pictures of WW products' />
                     </div>
                 </Link>
             )
@@ -83,21 +90,22 @@ class Dashboard extends Component {
         return (
             <div >
                 <Nav />
-                <div className='backgroundPhoto' >
+                <div className='backgroundPhoto content' >
                     <h1 className='title'>Gear</h1>
-                    <div  className='row'>
+                    <Slider {...settings}>
                         {mappedGear}
-                    </div>
-                    <h1 className='title'>Trips</h1>
-                    <div className='row'>
-                        {mappedTrips}
-                    </div>
-                    <h1 className='title'>Insta</h1>
-                    <div className='row' >
-                        {mappedphotos}
-                    </div>
-                </div>
+                    </Slider>
 
+                    <h1 className='title'>Trips</h1>
+                    <Slider {...settings}>
+                        {mappedTrips}
+                    </Slider>
+
+                    <h1 className='title'>Photo Gallery</h1>
+                    <Slider {...settings}>
+                        {mappedphotos}
+                    </Slider>
+                </div>
             </div>
         )
     }

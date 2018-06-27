@@ -1,25 +1,25 @@
 .backgroundPhoto{
-    display: flex;
-    flex-wrap: wrap;
     position: relative;
     background: url("../Assets/ww_background.svg");
     width:90%;
     left: 50%;
-    top: 15%;
     transform: translateX(-50%);
-    align-items: center;
-    justify-content: center;
     min-height: 100vh
 }
 
 .title{
     margin: 20px;
     display: flex;
+    margin-bottom: -20px;
+}
+
+//This pushes all the stuff lower on the page
+.content{
+    margin: 0px;
 }
 
 .instapic{
-    width: 400px;
-    height: 400px;
+    height: 350px;
     margin: 20px;
     display: flex;
     align-items: center;
@@ -39,6 +39,18 @@ flex-wrap: wrap-reverse;
 
 .inventory{
     margin-top: 25%;
+    align-items: center;
+    justify-content: center;
+}
+.dashpics{
+    width:100%;
+}
+
+.travelpic{
+    
+    height: 275px;
+    margin: 20px;
+    display: flex;
     align-items: center;
     justify-content: center;
 }

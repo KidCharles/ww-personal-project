@@ -85,6 +85,10 @@ class Cart extends Component {
             <div>
                 <Nav />
                 <h1>THIS IS YOUR CART </h1>
+                
+                <Link to={{ pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } }} >
+                    <button className='' >Checkout</button>
+                </Link>
 
                 {mappedCart.length > 0 ?
                     <div className='gearPhoto'>
@@ -92,9 +96,6 @@ class Cart extends Component {
                     </div>
                     : null
                 }
-                <Link to={{ pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } }} >
-                    <button className='' >Checkout</button>
-                </Link>
             </div>
         )
     }
