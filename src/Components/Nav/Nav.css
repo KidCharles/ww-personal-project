@@ -1,13 +1,12 @@
 
 .header{
-    position: relative;
     z-index: 5;
     /* you need position in order to use z-index */
     /* the zindex on the drawer is 0, and will be behind. */
-    height: 60px;
-    justify-content: space-around ;
+    justify-content: space-between ;
     align-items: center;
-    color: var(--white)
+    color: var(--white);
+    padding-top:20px;  
 }
 
 .menuItem{
@@ -22,12 +21,13 @@
 
 /* cart logo */
 .cart{
-    padding-top: 9px;
-    width:25px;
+    padding-top: 6px;
+    width:28px;
 }
 
 .account{
     padding-left: 10px;
+    padding-bottom: 5px; 
 }
 
 
@@ -37,13 +37,14 @@
 
 .navlogo{
     width: 200px;
-    padding-top:20px;  
-    padding-left:0px;    
-  
+    padding-left: 100px;
+ 
 }
 
 .menuList{
     display: inline;
+    padding-right: 100px;
+
 }
 
 

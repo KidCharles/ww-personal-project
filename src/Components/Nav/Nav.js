@@ -112,18 +112,16 @@ export default class Nav extends Component {
                                     this.state.isloggedIn
                                         ?
                                         <Link to='/cart' >
-                                            <img src={cart} className='cart' alt='Wayfaring cart logo' />
+                                            <img src={cart} className='cart menuItem' alt='Wayfaring cart logo' />
                                         </Link>
                                         :
                                         null
                                 }
-
-
                                 {
                                     this.state.isloggedIn
                                         ?
                                         <Link to='/account' >
-                                            <p className='account' >My Account</p>
+                                            <div className=' menuItem' >My Account</div>
                                         </Link>
                                         :
                                         null
