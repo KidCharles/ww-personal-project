@@ -5,6 +5,10 @@ import axios from 'axios';
 import Nav from '../Nav/Nav';
 import './Cart.css';
 import '../Dashboard/Dashboard.css';
+import background_logo from '../Assets/background_logo_outline.svg'
+import remove_cart from '../Assets/remove_cart_black.svg'
+
+
 
 
 
@@ -69,6 +73,7 @@ class Cart extends Component {
                             <div className='gearPicParent' >
 
                                 <img src={this.state.cart[i].gear_img} className='cart_item' />
+                                <img src={remove_cart} className='remove_cart' onClick={() => this.deleteCartItem(e.cart_id)} />
 
                                 {/* <div style={{ background: `url('${this.state.cart[i].gear_img}')`, width: '200px', height: '200px', backgroundSize: 'cover' }} className='gearpic' ></div> */}
                                 <p>{this.state.cart[i].gear_name}:  ${this.state.cart[i].gear_price}</p>
@@ -87,7 +92,7 @@ class Cart extends Component {
             <div >
                 <Nav />
                 <div className='backgroundPhoto content'>
-
+                    <img src={background_logo} className='background_logo' alt='' />
                     <h1>THIS IS YOUR CART </h1>
 
                     <Link to={{ pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } }} >

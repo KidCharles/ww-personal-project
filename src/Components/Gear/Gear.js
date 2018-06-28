@@ -7,6 +7,7 @@ import Nav from '../Nav/Nav';
 import '../Dashboard/Dashboard.css';
 import './Gear.css';
 import add_cart from '../Assets/add_cart_black.svg'
+import background_logo from '../Assets/background_logo_outline.svg'
 
 
 
@@ -23,11 +24,11 @@ class Gear extends Component {
         })
     }
 
-    handleToggle() {
-        this.setState({
-            toggle: !this.state.toggle
-        })
-    }
+    // handleToggle() {
+    //     this.setState({
+    //         toggle: !this.state.toggle
+    //     })
+    // }
 
     addToCartGear(id) {
         axios.post(`/api/addToCartGear/${id}`).then(alert('added to your cart'))
@@ -53,7 +54,7 @@ class Gear extends Component {
             <div>
                 <Nav />
                 <div className='backgroundPhoto gearPhoto'  >
-                    {/* row wrap */}
+                <img src={background_logo} className='background_logo' alt='' />
                     {mappedGear}
                 </div>
             </div>

@@ -1,5 +1,6 @@
 .gearPicParent{
-    margin: 35px 20px;
+    margin: 0px 20px;
+    height: 200px;
 
 }
 
@@ -40,4 +41,11 @@
 
 .add_cart:hover{
     width: 155px;
+}
+
+.background_logo{
+    position: absolute;
+    width: 400px;
+    bottom: 0;
+    right: 0;
 }
