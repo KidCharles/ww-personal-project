@@ -50,10 +50,13 @@ class Dashboard extends Component {
         var settings = {
             dots: true,
             infinite: true,
-            speed: 500,
+            speed: 9000,
             slidesToShow: 4,
             slidesToScroll: 2,
-            className: 'slideMargin'
+            className: 'slideMargin',
+            autoplay: true,
+            autoplaySpeed: 3000,
+            // easing: 'linear',
         };
 
         let mappedphotos = this.state.insta.map((e, i) =>

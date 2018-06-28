@@ -120,8 +120,12 @@ class AdminTrip extends Component {
         return (
             <div>
                 <Nav />
-                <div className='backgroundPhoto column' >
-                    <form className=' column' >
+                <div className='backgroundPhoto' >
+                </div>
+
+                <div className='admin_form'>
+
+                    <form  >
                         <p>ENTER GEAR NAME:</p>
                         <input className='column' onChange={(e) => this.handleGearName(e.target.value)} value={this.state.gear_name} type='text' />
                         <p>ENTER GEAR IMG:</p>
@@ -141,10 +145,12 @@ class AdminTrip extends Component {
                         <input className='column' onChange={(e) => this.handleGearPrice(e.target.value)} value={this.state.gear_price} type='number' />
                         <button onClick={(e) => this.handleClick(e)} >CLICK TO ADD NEW PRODUCT TO GEAR</button>
                     </form>
-                    <div className='row inventory' >
-                        {mappedGear}
-                    </div>
                 </div>
+
+                <div className='row inventory' >
+                    {mappedGear}
+                </div>
+                
             </div>
         )
     }

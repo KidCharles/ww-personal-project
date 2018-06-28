@@ -1,11 +1,15 @@
 .gearPicParent{
     margin: 0px 20px;
     height: 200px;
+    position: relative;
 
 }
 
 .gearpic{
-    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: unset;
+    justify-content: center;
 }
 
 .gearPhoto{
@@ -15,32 +19,24 @@
     justify-content: center;
 
 }
-
-.container {
-    position: relative;
-    text-align: center;
-    color: white;
-}
-
 .bottom-right {
     position: absolute;
     top: 145px;
     bottom: .05px;
     right: 8px;
 }
-
-.addToCart{
-    width: 40px;
-    height: 40px;
-    font-size: 30px; 
-}
-
 .add_cart{
-    width: 10px;
+    width: 150px;
+    opacity: 0;
 }
 
 .add_cart:hover{
     width: 155px;
+}
+
+.gearpic:hover .add_cart {
+    width: 155px;
+    opacity: 1;
 }
 
 .background_logo{
@@ -50,3 +46,9 @@
     right: 0;
     z-index: -99;
 }
+
+/* ADMIN FORM  */
+.admin_form{
+    width: 200px;
+}
+/* ADMIN FORM  */

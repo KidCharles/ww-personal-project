@@ -1,21 +1,39 @@
-.gearPicParent{
-    margin: 35px 20px;
-}
-
-.gearpic{
-    position: relative;
-}
-
-.gearPhoto{
-align-items: unset;
-}
-
 .cart_item{
     width: 200px;
     height: 200;
+    position: relative;
 }
 
+/* REMOVE FROM CART */
 .remove_cart{
-    width: 10px;
-
+    width: 150px;
+    opacity: 0;
+    left: 0;
+    position: absolute;
 }
+
+.gearPicParent:hover .remove_cart {
+    width: 155px;
+    opacity: 1;
+}
+/* REMOVE FROM CART */
+
+
+/* CHECKOUT BUTTON */
+.checkout_button{
+    margin-top: -10px;
+    width: 150px;
+}
+
+.checkout_button:hover{
+    width: 152px;
+}
+/* CHECKOUT BUTTON */
+
+
+/* MY CART BANNER */
+.my_cart{
+    width:300px;
+    position: relative;
+}
+/* MY CART BANNER */

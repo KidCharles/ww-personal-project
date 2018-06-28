@@ -6,7 +6,9 @@ import Nav from '../Nav/Nav';
 import './Cart.css';
 import '../Dashboard/Dashboard.css';
 import background_logo from '../Assets/background_logo_outline.svg'
-import remove_cart from '../Assets/remove_cart_black.svg'
+import remove_cart from '../Assets/remove_cart_black.svg';
+import checkout_button from '../Assets/checkout.svg';
+import my_cart from '../Assets/my_cart.svg';
 
 
 
@@ -84,7 +86,6 @@ class Cart extends Component {
                             </div>
 
                     }
-                    <button className='delete-button' onClick={() => this.deleteCartItem(e.cart_id)}>x</button>
                 </div>
             )
         })
@@ -93,18 +94,20 @@ class Cart extends Component {
                 <Nav />
                 <div className='backgroundPhoto content'>
                     <img src={background_logo} className='background_logo' alt='' />
-                    <h1>THIS IS YOUR CART </h1>
+                    <img src={my_cart} className='my_cart' />
 
-                    <Link to={{ pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } }} >
-                        <button className='' >Checkout</button>
-                    </Link>
+                    <div>
 
-                    {mappedCart.length > 0 ?
-                        <div className='gearPhoto'>
-                            {mappedCart}
-                        </div>
-                        : null
-                    }
+                        <Link to={{ pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } }} >
+                            <img src={checkout_button} className='checkout_button' />
+                        </Link>
+                        {mappedCart.length > 0 ?
+                            <div className='gearPhoto'>
+                                {mappedCart}
+                            </div>
+                            : null
+                        }
+                    </div>
                 </div>
             </div>
         )

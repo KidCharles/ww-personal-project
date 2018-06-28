@@ -19,13 +19,3 @@
     display: flex;
     justify-content: space-around;
 }
-
-.add_cart{
-    width: 150px;
-    opacity: 0;
-}
-
-.gearpic:hover .add_cart {
-    width: 155px;
-    opacity: 1;
-}
