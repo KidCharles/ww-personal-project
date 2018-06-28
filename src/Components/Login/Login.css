@@ -62,3 +62,18 @@
 .enterbutton:hover {
     width:205px;
 }
+
+@media(max-width: 700px){
+    .logo{
+        width:50%;
+    }
+
+    .loginInputs{
+        top: 50%;
+    }
+
+    .background{
+        height: 100vh;
+    }
+ 
+}

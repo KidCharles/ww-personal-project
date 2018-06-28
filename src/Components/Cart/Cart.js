@@ -24,9 +24,10 @@ class Cart extends Component {
         }
     }
 
+    
     componentDidMount() {
-        axios.get('/auth/user').then(user => {
-            // console.log(user)
+        axios.get('/api/userInfo').then(user => {
+            console.log(user)
             if (user.data.username !== undefined) {
                 this.setState({ userId: user.data.user_id })
             }
