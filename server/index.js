@@ -8,6 +8,7 @@ const express = require('express')
     , massive = require('massive')
     , ctrl = require('./ctrl')
     , cors = require('cors')
+    // , path = reqiure('path')
     // , stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 
@@ -20,10 +21,14 @@ const {
     CLIENT_ID,
     CLIENT_SECRET,
     CALLBACK_URL,
-    CONNECTION_STRING
+    CONNECTION_STRING,
+    SERVER_PORT
 } = process.env
 
 const app = express()
+
+app.use( express.static( `${__dirname}/../build` ) );
+
 
 massive(CONNECTION_STRING).then(db => { app.set('db', db) })
 
@@ -93,8 +98,8 @@ passport.deserializeUser((primaryKeyId, done) => {
 // AUTH0--------------------------------------------------
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/dash',
-    failureRedirect: 'http://localhost:3000/#/'
+    successRedirect: `${process.env.REACT_APP_FRONTEND_URL}#/dash`,
+    failureRedirect: `${process.env.REACT_APP_FRONTEND_URL}#/`
 }))
 
 // app.get('/auth/logout', (req, res) => {
@@ -122,7 +127,7 @@ app.get('/api/userInfo', (req, res) => {
 
 app.get('/auth/logout', (req, res) => {
     req.logOut();
-    return res.redirect(`https://${DOMAIN}/v2/logout?returnTo=http://localhost:3000`);
+    return res.redirect(`https://${DOMAIN}/v2/logout?returnTo=${REACT_APP_FRONTEND_URL}`);
 })
 
 // app.get('/auth/me', (req, res, next) => {
@@ -164,5 +169,9 @@ app.post('/api/addToCartGear/:id', ctrl.addToCartGear)
 //ADD TRIPS TO CART
 app.post('/api/addToCartTrips/:id', ctrl.addToCartTrips)
 
-const port = 3030
-app.listen(port, () => console.log(`server is Glistening on port ${port}`))
+// app.get('*', (req, res)=>{
+//     res.sendFile(path.join(__dirname, '../build/index.html'));
+// });
+
+
+app.listen(SERVER_PORT, () => console.log(`server is Glistening on port ${SERVER_PORT}`))

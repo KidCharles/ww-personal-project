@@ -13,7 +13,7 @@ class Money extends Component {
     onToken = (token) => {
         token.card = void 0;
         console.log('token', token);
-        axios.post('http://localhost:3030/api/payment', { token, amount: this.state.price }).then(response => {
+        axios.post('/api/payment', { token, amount: this.state.price }).then(response => {
             alert('we are in business')
         });
     }
