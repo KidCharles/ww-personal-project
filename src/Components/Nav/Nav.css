@@ -61,12 +61,12 @@
     margin-left: 100px;
 }
 .bar1{
-    transform: rotate(405deg) translate(8px,3px)
+    transform: rotate(405deg) translate(7px,3px)
 }
 .bar2{
-    transform: rotate(-405deg);
-    background: rgba(0, 0, 0, 0)
+    transform: rotate(-180deg)translate(-3px,-12px);
 }
+
 .bar3{
     transform: rotate(-405deg) translate(7px, -2px)
 }

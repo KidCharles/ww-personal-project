@@ -18,18 +18,26 @@ export default class Login extends Component {
         return (
             <div className='login'  >
                 <div>
-                <video className="video" autoPlay="true" loop='true' >
-                    <source src={ video } type="video/mp4" />
-                </video>
+                    <video className="video" autoPlay="true" loop='true' >
+                        <source src={video} type="video/mp4" />
+                    </video>
                 </div>
                 <img src={background} className='background' alt='textured' />
                 <img src={logo} className='logo' alt='Wayfaring World logo' />
                 <div className='loginInputs column' >
                     <Link to='/dash' >
-                        <img src={enter_button} className='enterbutton'/>
+                        <img src={enter_button} className='enterbutton' />
                     </Link>
+
+                    <div class="svg-wrapper">
+                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                            <rect class="shape" height="60" width="320" />
+                        </svg>
+                        <div class="text">HOVER</div>
+                    </div>
+                    
                     <a href={process.env.REACT_APP_LOGIN}>
-                        <img src={loginbutton} className='loginButton'/>
+                        <img src={loginbutton} className='loginButton' />
                     </a>
                     {/* <input type='text' className='' onChange={(e) => this.handleUsernameChange(e.target.value)} />
                     <input type='text' className='' onChange={(e) => this.handlePasswordChange(e.target.value)} /> */}

@@ -9,6 +9,8 @@ import background_logo from '../Assets/background_logo_outline.svg'
 import remove_cart from '../Assets/remove_cart_black.svg';
 import checkout_button from '../Assets/checkout.svg';
 import my_cart from '../Assets/my_cart.svg';
+import empty_cart from '../Assets/empty_cart.svg';
+
 
 
 
@@ -24,7 +26,7 @@ class Cart extends Component {
         }
     }
 
-    
+
     componentDidMount() {
         axios.get('/api/userInfo').then(user => {
             console.log(user)
@@ -97,11 +99,20 @@ class Cart extends Component {
                     <img src={background_logo} className='background_logo' alt='' />
                     <img src={my_cart} className='my_cart' />
 
-                    <div>
+                    <div className='' >
 
-                        <Link to={{ pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } }} >
-                            <img src={checkout_button} className='checkout_button' />
-                        </Link>
+                        {
+                            this.state.cart.length === 0
+                                ?
+                                <img src={empty_cart} className='' />
+                                :
+
+
+                                <Link to={{ pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } }} >
+                                    <img src={checkout_button} className='checkout_button' />
+                                </Link>
+                        }
+
                         {mappedCart.length > 0 ?
                             <div className='gearPhoto'>
                                 {mappedCart}

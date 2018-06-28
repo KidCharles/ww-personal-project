@@ -53,7 +53,7 @@ class Dashboard extends Component {
             speed: 9000,
             slidesToShow: 4,
             slidesToScroll: 2,
-            className: 'slideMargin',
+            // className: 'slideMargin',
             autoplay: true,
             autoplaySpeed: 3000,
             // easing: 'linear',
