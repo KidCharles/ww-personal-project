@@ -58,6 +58,7 @@
     height: 4px;
     margin: 3px;
     transition: .5s;
+    margin-left: 100px;
 }
 .bar1{
     transform: rotate(405deg) translate(8px,3px)
@@ -67,7 +68,7 @@
     background: rgba(0, 0, 0, 0)
 }
 .bar3{
-    transform: rotate(-405deg) translate(7px, -4px)
+    transform: rotate(-405deg) translate(7px, -2px)
 }
 
 a {
@@ -87,5 +88,14 @@ a:active {
     }
     .menuList{
         display: none
+    }
+
+    .navlogo{
+        width: 250px;
+        margin-right: 32px;
+        padding-bottom: 24px;
+    }
+    .header{
+        height: 80px;
     }
 } 

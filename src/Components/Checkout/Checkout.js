@@ -59,7 +59,7 @@ export default class Checkout extends Component {
 
     onToken = (token) => {
         token.card = void 0;
-        axios.post(`${process.env.REACT_APP_FRONTEND_URL}/api/payment/${this.state.id}`, { token, amount: this.state.price /* the amount actually charged*/ })
+        axios.post(`/api/payment/${this.state.id}`, { token, amount: this.state.price /* the amount actually charged*/ })
             .then(response => {
                 // this.onPurchaseConfirmation();
                 this.setState({ alertToggle: true })
