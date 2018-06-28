@@ -10,3 +10,7 @@
 align-items: unset;
 }
 
+.cart_item{
+    width: 200px;
+    height: 200;
+}

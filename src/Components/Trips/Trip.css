@@ -1,25 +1,31 @@
 .trips{
     margin: 2%;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.trip{
-    margin: 2%;
+    justify-content: center; */
 }
 
 .coord{
     display: flex;
     align-items: center;
     justify-content: center;
-}    
+}
+
+.trip_img{
+    width: 100%;
+} 
+
 .tripBanner{
     display: flex;
     justify-content: space-around;
 }
-/* .mappedtrip{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
+
+.add_cart{
+    width: 150px;
+    opacity: 0;
+}
+
+.gearpic:hover .add_cart {
+    width: 155px;
+    opacity: 1;
+}

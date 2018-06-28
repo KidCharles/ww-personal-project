@@ -6,6 +6,7 @@ import Nav from '../Nav/Nav'
 import axios from 'axios';
 import '../Dashboard/Dashboard.css';
 import './Trip.css';
+import add_cart from '../Assets/add_cart_button.svg'
 
 class Trips extends Component {
     //cahnge to functional
@@ -31,18 +32,18 @@ class Trips extends Component {
             return (
                 <div key={e.trips_id} style={{ "backgroundColor": e.trip_color }} className='trips' >
                     <div className='row tripBanner'>
-                        <div className='row coord'>
+                        <div className='coord'>
                             <h1>coordinates</h1>
-                            <div className='column coord' >
+                            <div className='column trip_img' >
                                 <img src={e.trip_img} className='' alt='trip pic' />
                                 <h1>{e.trip_name}</h1>
                             </div>
                         </div>
-                        <div className='column coord' >
+                        <div className='' >
                             <h1>Backpacker Package</h1>
                             <h1>{e.trip_short_desc}</h1>
                             <h1>${e.trip_price}</h1>
-                            <button type='' className='' onClick={()=> this.addToCartTrips(e.trips_id)}>+</button>
+                            <img src={add_cart} className='add_cart'  onClick={()=> this.addToCartTrips(e.trips_id)}/>
                         </div>
                     </div>
                 </div>

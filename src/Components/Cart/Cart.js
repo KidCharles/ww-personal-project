@@ -68,7 +68,7 @@ class Cart extends Component {
                             ?
                             <div className='gearPicParent' >
 
-                                <img src={this.state.cart[i].gear_img} />
+                                <img src={this.state.cart[i].gear_img} className='cart_item' />
 
                                 {/* <div style={{ background: `url('${this.state.cart[i].gear_img}')`, width: '200px', height: '200px', backgroundSize: 'cover' }} className='gearpic' ></div> */}
                                 <p>{this.state.cart[i].gear_name}:  ${this.state.cart[i].gear_price}</p>

@@ -33,3 +33,11 @@
     height: 40px;
     font-size: 30px; 
 }
+
+.add_cart{
+    width: 10px;
+}
+
+.add_cart:hover{
+    width: 155px;
+}
