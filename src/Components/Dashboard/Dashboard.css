@@ -10,10 +10,10 @@
 .title{
     margin: 20px;
     display: flex;
-    margin-bottom: -20px;
+    margin-bottom: 20px;
 }
 
-//This pushes all the stuff lower on the page
+
 .content{
     margin: 0px;
 }

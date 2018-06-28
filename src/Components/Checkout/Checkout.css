@@ -1,0 +1,10 @@
+.thanks{
+    position: absolute;
+    top: 0;
+
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.435);
+    width:100vw;
+    height: 100vh;
+}

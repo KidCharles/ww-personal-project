@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Nav from '../Nav/Nav';
-import './Cart.css'
+import './Cart.css';
+import '../Dashboard/Dashboard.css';
+
 
 
 class Cart extends Component {
@@ -39,7 +41,7 @@ class Cart extends Component {
         for (let i = 0; i < cart.length; i++) {
             if (!cart[i].paid)
                 amount += cart[i].gear_price;
-                // amount += cart[i].trips_price;
+            // amount += cart[i].trips_price;
         }
         this.setState({ cartAmount: amount })
     };
@@ -60,7 +62,7 @@ class Cart extends Component {
         console.log(this.state)
         let mappedCart = this.state.cart.map((e, i) => {
             return (
-                <div key={i} >
+                <div key={i}  >
                     {
                         this.state.cart[i].gear_name
                             ?
@@ -82,20 +84,23 @@ class Cart extends Component {
             )
         })
         return (
-            <div>
+            <div >
                 <Nav />
-                <h1>THIS IS YOUR CART </h1>
-                
-                <Link to={{ pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } }} >
-                    <button className='' >Checkout</button>
-                </Link>
+                <div className='backgroundPhoto content'>
 
-                {mappedCart.length > 0 ?
-                    <div className='gearPhoto'>
-                        {mappedCart}
-                    </div>
-                    : null
-                }
+                    <h1>THIS IS YOUR CART </h1>
+
+                    <Link to={{ pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } }} >
+                        <button className='' >Checkout</button>
+                    </Link>
+
+                    {mappedCart.length > 0 ?
+                        <div className='gearPhoto'>
+                            {mappedCart}
+                        </div>
+                        : null
+                    }
+                </div>
             </div>
         )
     }

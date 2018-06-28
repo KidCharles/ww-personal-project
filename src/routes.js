@@ -9,14 +9,12 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Gear from './Components/Gear/Gear';
 import Trips from './Components/Trips/Trips';
 import AdminTrip from './Components/Trips/AdminTrip';
-import Blog from './Components/Blog/Blog';
+// import Blog from './Components/Blog/Blog';
 import About from './Components/About/About';
 import Account from './Components/Account/Account';
 import Gear_admin from './Components/Gear/Gear_admin';
 import Cart from './Components/Cart/Cart';
 import Checkout from './Components/Checkout/Checkout';
-import Thankyou from './Components/Thankyou/Thankyou';
-
 // create a private route-----------
 //class Private
 class PrivateRoute extends Component {
@@ -66,9 +64,8 @@ export default (
 		<Route path='/account' component={Account} />
 		<Route path='/cart' component={Cart} />
 		<Route path='/checkout' component={Checkout} />
-		<Route path='/blog' component={Blog} />
+		{/* <Route path='/blog' component={Blog} /> */}
 		<Route path='/about' component={About} />
-		<Route path='/thankyou' component={Thankyou} />
 		<PrivateRoute component={Gear_admin} path="/gearadmin" />
 		<PrivateRoute component={AdminTrip} path="/admin" />
 	</Switch>

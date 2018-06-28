@@ -140,7 +140,7 @@ module.exports = {
         }
     },
 
-    updateAddress: (req, res, next) => {
+    updateAddress: (req, res) => {
         const { id, street1, street2, city, state, zip } = req.body
         const db = req.app.get('db');
         db.update_address([id, street1, street2, city, state, zip])

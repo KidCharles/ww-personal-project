@@ -14,7 +14,7 @@
     position: absolute;
     width:30%;
     left: 50%;
-    top: 15%;
+    top: 12%;
     transform: translateX(-50%);
     align-items: center;
     justify-content: center;
@@ -24,7 +24,7 @@
     position: absolute;
     width:30%;
     left: 50%;
-    top: 52%;
+    top: 50%;
     transform: translateX(-50%);
     align-items: center;
     justify-content: center;
@@ -45,4 +45,20 @@
         -webkit-transform: translateX(-50%) translateY(-50%);
         transform: translateX(-50%) translateY(-50%);
         background-size: cover; 
+}
+
+.loginButton{
+    width:90px;
+}
+
+.loginButton:hover{
+    width:100px;
+}
+
+.enterbutton{
+    width:200px;
+}
+
+.enterbutton:hover {
+    width:205px;
 }

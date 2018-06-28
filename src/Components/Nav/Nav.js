@@ -96,17 +96,17 @@ export default class Nav extends Component {
                                         null
                                 }
 
-                                <Link to='/blog' >
+                                {/* <Link to='/blog' >
                                     <div className='menuItem'>Blog</div>
-                                </Link>
+                                </Link> */}
                                 <Link to='/about' >
                                     <div className='menuItem'>About</div>
                                 </Link>
                                 <Link to='/about' >
-                                    <div className='menuItem'>Contact US</div>
+                                    <div className='menuItem'>Contact</div>
                                 </Link>
                                 <Link to='/' >
-                                    <div className='menuItem'>Login/Register</div>
+                                    <div className='menuItem'>Login</div>
                                 </Link>
                                 {
                                     this.state.isloggedIn

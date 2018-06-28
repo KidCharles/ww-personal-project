@@ -15,6 +15,9 @@
     border-bottom: 1px solid transparent;
     padding-bottom: 0.125em;
     transition: border-bottom-color 50ms linear 0s;
+    font-weight: 350;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* cart logo */

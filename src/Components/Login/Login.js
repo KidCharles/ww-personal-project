@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../Assets/ww_logo_white.svg';
 import background from '../Assets/login_background.svg';
-import video from '../Assets/ww_vid_compressed.mp4'
+import video from '../Assets/ww_video.mp4'
 import './Login.css';
+import loginbutton from '../Assets/login_button.svg'
+import enter_button from '../Assets/enter_button.svg'
 
 export default class Login extends Component {
     constructor(props) {
@@ -24,10 +26,10 @@ export default class Login extends Component {
                 <img src={logo} className='logo' alt='Wayfaring World logo' />
                 <div className='loginInputs column' >
                     <Link to='/dash' >
-                        <button>Enter</button>
+                        <img src={enter_button} className='enterbutton'/>
                     </Link>
                     <a href={process.env.REACT_APP_LOGIN}>
-                        <button>Login</button>
+                        <img src={loginbutton} className='loginButton'/>
                     </a>
                     {/* <input type='text' className='' onChange={(e) => this.handleUsernameChange(e.target.value)} />
                     <input type='text' className='' onChange={(e) => this.handlePasswordChange(e.target.value)} /> */}

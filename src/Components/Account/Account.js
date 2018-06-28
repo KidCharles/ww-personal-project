@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Nav from '../Nav/Nav';
+import '../Dashboard/Dashboard.css';
+
 
 
 class Account extends Component {
@@ -79,24 +81,26 @@ class Account extends Component {
     render() {
         console.log(this.state)
         return (
-            <div>
+            <div >
                 <Nav />
-                <h1>Welcome to your WW Account!</h1>
-                <p>Here you can make changes to your personal information</p>
-                <div>
-                    <h1>Shipping Address</h1>
-                    <p>Street 1*</p>
-                    <input placeholder={this.state.currentS1} name='street1' onChange={e => this.handleInputChange(e)} />
-                    <p>Street 2</p>
-                    <input placeholder={this.state.currentS2} name='street2' onChange={e => this.handleInputChange(e)} />
-                    <p>City*</p>
-                    <input placeholder={this.state.currentCity} name='city' onChange={e => this.handleInputChange(e)} />
-                    <p>State*</p>
-                    <input placeholder={this.state.currentState} name='state' onChange={e => this.handleInputChange(e)} />
-                    <p>Zip*</p>
-                    <input placeholder={this.state.currentZip} name='zip' onChange={e => this.handleInputChange(e)} />
-                    <br />
-                    <button onClick={this.submitAddress} >Submit Changes</button>
+                <div className='backgroundPhoto content'>
+                    <h1>Welcome to your WW Account!</h1>
+                    <p>Here you can make changes to your personal information</p>
+                    <div>
+                        <h1>Shipping Address</h1>
+                        <p>Street 1*</p>
+                        <input placeholder={this.state.currentS1} name='street1' onChange={e => this.handleInputChange(e)} />
+                        <p>Street 2</p>
+                        <input placeholder={this.state.currentS2} name='street2' onChange={e => this.handleInputChange(e)} />
+                        <p>City*</p>
+                        <input placeholder={this.state.currentCity} name='city' onChange={e => this.handleInputChange(e)} />
+                        <p>State*</p>
+                        <input placeholder={this.state.currentState} name='state' onChange={e => this.handleInputChange(e)} />
+                        <p>Zip*</p>
+                        <input placeholder={this.state.currentZip} name='zip' onChange={e => this.handleInputChange(e)} />
+                        <br />
+                        <button onClick={this.submitAddress} >Submit Changes</button>
+                    </div>
                 </div>
             </div>
         )
