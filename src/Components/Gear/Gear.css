@@ -48,4 +48,5 @@
     width: 400px;
     bottom: 0;
     right: 0;
+    z-index: -99;
 }
