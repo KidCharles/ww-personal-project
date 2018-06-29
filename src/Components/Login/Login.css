@@ -10,15 +10,6 @@
     height: 100%;
 }
 
-.logo{
-    position: absolute;
-    width:30%;
-    left: 50%;
-    top: 12%;
-    transform: translateX(-50%);
-    align-items: center;
-    justify-content: center;
-}
 
 .loginInputs{
     position: absolute;
@@ -49,6 +40,7 @@
 
 .loginButton{
     width:90px;
+    padding-top: 40px;
 }
 
 .loginButton:hover{
@@ -68,7 +60,7 @@
 html, body {
     background: #333;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-align: center;
   }
   
@@ -119,13 +111,47 @@ html, body {
 /* SVG ANIMATION */
 
 
-/* LOGO ANIMATION
- */
+/* LOGO ANIMATION*/
+.logo{
+    position: absolute;
+    width:30%;
+    left: 50%;
+    top: 12%;
+    transform: translateX(-50%);
+}
 
+path {
+    stroke: #fff;
+    fill: #fff;
+    stroke-dasharray: 2500;
+    opacity: 10;
+    animation: animate 3s cubic-bezier(0,0.23,1,.1)
+}
 
+@keyframes animate {
+    0% {
+        opacity: 0;
+        fill: none;
+        stroke-dashoffset: 2500;
+    }
 
-
-
+    20%{
+        stroke-dashoffset: 2500;
+    }
+    30% {
+        opacity: 10;
+        fill: none;
+    }
+    90% {
+        fill: rgba(255, 255, 255, 0);
+    }
+    100% {
+        opacity: 10;
+        fill: rgba(255, 255, 255, 1);
+        stroke-dashoffset: 0;
+    }
+}
+/* LOGO ANIMATION*/
 
 
 @media(max-width: 700px){

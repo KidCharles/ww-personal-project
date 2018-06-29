@@ -80,9 +80,14 @@ textarea
 }
 
 h1{
-  font-size: 40px;
+  /* font-size: 40px; */
   font-weight: 500;
-  color: var(--white)
+  color: var(--white);
+  font-family: 'Roboto Condensed';
+  font-size: 32px;
+  letter-spacing: 8px;
+  line-height: 32px;
+
 }
 
 p{

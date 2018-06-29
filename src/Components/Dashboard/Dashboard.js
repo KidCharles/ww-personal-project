@@ -20,14 +20,9 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo( 0, 0 ) 
         axios.get('/api/insta').then(res => {
             this.setState({ insta: res.data })
-        })
-        axios.get('/api/trips').then((res) => {
-            this.props.getTrips(res.data);
-        })
-        axios.get('/api/gear').then((res) => {
-            this.props.getGear(res.data);
         })
     }
 
@@ -50,7 +45,7 @@ class Dashboard extends Component {
         var settings = {
             dots: true,
             infinite: true,
-            speed: 9000,
+            speed: 900,
             slidesToShow: 4,
             slidesToScroll: 2,
             // className: 'slideMargin',

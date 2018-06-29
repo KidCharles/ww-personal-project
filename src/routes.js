@@ -1,6 +1,7 @@
 //import react and switch and route
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import axios from "axios";
 
 //import components to be routed
@@ -56,17 +57,19 @@ class PrivateRoute extends Component {
 
 //this is setting up our routes, need EXACT on the 'home'
 export default (
-	<Switch>
-		<Route exact path='/' component={Login} />
-		<Route path='/dash' component={Dashboard} />
-		<Route path='/gear' component={Gear} />
-		<Route path='/trip' component={Trips} />
-		<Route path='/account' component={Account} />
-		<Route path='/cart' component={Cart} />
-		<Route path='/checkout' component={Checkout} />
-		{/* <Route path='/blog' component={Blog} /> */}
-		<Route path='/about' component={About} />
-		<PrivateRoute component={Gear_admin} path="/gearadmin" />
-		<PrivateRoute component={AdminTrip} path="/admin" />
-	</Switch>
+	<HashRouter>
+		<Switch>
+			<Route exact path='/' component={Login} />
+			<Route path='/dash' component={Dashboard} />
+			<Route path='/gear' component={Gear} />
+			<Route path='/trip' component={Trips} />
+			<Route path='/account' component={Account} />
+			<Route path='/cart' component={Cart} />
+			<Route path='/checkout' component={Checkout} />
+			{/* <Route path='/blog' component={Blog} /> */}
+			<Route path='/about' component={About} />
+			<PrivateRoute component={Gear_admin} path="/gearadmin" />
+			<PrivateRoute component={AdminTrip} path="/admin" />
+		</Switch>
+	</HashRouter>
 )

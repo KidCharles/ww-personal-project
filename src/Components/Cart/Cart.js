@@ -97,8 +97,13 @@ class Cart extends Component {
                 <Nav />
                 <div className='backgroundPhoto content'>
                     <img src={background_logo} className='background_logo' alt='' />
-                    <img src={my_cart} className='my_cart' />
-
+                    {/* <img src={my_cart} className='my_cart' /> */}
+                    <div class="svg-wrapper ww_account">
+                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                            <rect class="shape" height="60" width="320" />
+                        </svg>
+                        <div class="text">MY WW CART</div>
+                    </div>
                     <div className='' >
 
                         {

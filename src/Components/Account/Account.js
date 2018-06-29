@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Nav from '../Nav/Nav';
 import '../Dashboard/Dashboard.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './Account.css'
 
 
 
@@ -85,10 +86,17 @@ class Account extends Component {
             <div >
                 <Nav />
                 <div className='backgroundPhoto content'>
-                    <h1>Welcome to your WW Account!</h1>
+
+                    <div class="svg-wrapper ww_account">
+                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                            <rect class="shape" height="60" width="320" />
+                        </svg>
+                        <div class="text">MY WW CART</div>
+                    </div>
+
                     <p>Here you can make changes to your personal information</p>
+                        <div class="text ship">SHIPPING ADDRESS</div>
                     <div>
-                        <h1>Shipping Address</h1>
                         <p>Street 1*</p>
                         <input placeholder={this.state.currentS1} name='street1' onChange={e => this.handleInputChange(e)} />
                         <p>Street 2</p>
@@ -102,7 +110,7 @@ class Account extends Component {
                         <br />
                         <button onClick={this.submitAddress} >Submit Changes</button>
                         <Link to='' >
-                        <li  href={process.env.REACT_APP_LOGOUT}  className=''>LOGOUT</li>
+                            <li href={process.env.REACT_APP_LOGOUT} className=''>LOGOUT</li>
                         </Link>
                     </div>
                 </div>

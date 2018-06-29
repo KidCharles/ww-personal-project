@@ -18,6 +18,10 @@ export default (props) => {
         <Link to='/' >
           <div className='menuItem'>Login</div>
         </Link>
+
+        <Link to='/account' >
+          <div className='menuItem'>MY ACCOUNT</div>
+        </Link>
       </section>
     </div>
   )

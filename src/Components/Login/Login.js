@@ -6,7 +6,8 @@ import video from '../Assets/ww_video.mp4';
 import './Login.css';
 import loginbutton from '../Assets/login_button.svg';
 import enter_button from '../Assets/enter_button.svg';
-import logo_outline from '../Assets/logo_outline.svg';
+import logo_outline from '../Assets/logo_outline.js';
+// import logo_outline from '../Assets/logo_outline.svg';
 
 export default class Login extends Component {
     constructor(props) {
@@ -25,21 +26,23 @@ export default class Login extends Component {
                 </div>
                 <img src={background} className='background' alt='textured' />
                 {/* <img src={logo} className='logo' alt='Wayfaring World logo' /> */}
-                <img src={logo_outline} className='logo logo_wrapper' alt='Wayfaring World logo' />
+                {/* <img src={logo_outline} className='logo' alt='Wayfaring World logo' /> */}
+                {logo_outline}
                 <div className='loginInputs column' >
                     <Link to='/dash' >
-                        <img src={enter_button} className='enterbutton' />
+                        <div class="svg-wrapper">
+                            <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                <rect class="shape" height="60" width="320" />
+                            </svg>
+                            <div class="text">ENTER</div>
+                        </div>
                     </Link>
 
-                    <div class="svg-wrapper">
-                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-                            <rect class="shape" height="60" width="320" />
-                        </svg>
-                        <div class="text">HOVER</div>
-                    </div>
 
                     <a href={process.env.REACT_APP_LOGIN}>
-                        <img src={loginbutton} className='loginButton' />
+                        {/* <img src={loginbutton} className='loginButton' /> */}
+                        
+                        <div class="text loginButton">LOGIN</div>
                     </a>
                     {/* <input type='text' className='' onChange={(e) => this.handleUsernameChange(e.target.value)} />
                     <input type='text' className='' onChange={(e) => this.handlePasswordChange(e.target.value)} /> */}
