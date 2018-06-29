@@ -6,6 +6,7 @@ import video from '../Assets/ww_video.mp4';
 import './Login.css';
 import loginbutton from '../Assets/login_button.svg';
 import enter_button from '../Assets/enter_button.svg';
+import logo_outline from '../Assets/logo_outline.svg';
 
 export default class Login extends Component {
     constructor(props) {
@@ -23,7 +24,8 @@ export default class Login extends Component {
                     </video>
                 </div>
                 <img src={background} className='background' alt='textured' />
-                <img src={logo} className='logo' alt='Wayfaring World logo' />
+                {/* <img src={logo} className='logo' alt='Wayfaring World logo' /> */}
+                <img src={logo_outline} className='logo logo_wrapper' alt='Wayfaring World logo' />
                 <div className='loginInputs column' >
                     <Link to='/dash' >
                         <img src={enter_button} className='enterbutton' />
