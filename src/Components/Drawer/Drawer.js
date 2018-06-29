@@ -1,7 +1,7 @@
 import React from 'react';
 import './Drawer.css';
 import { Link } from 'react-router-dom';
-
+import cart from '../Assets/cart.svg';
 
 export default (props) => {
   return (
@@ -22,6 +22,11 @@ export default (props) => {
         <Link to='/account' >
           <div className='menuItem'>MY ACCOUNT</div>
         </Link>
+
+        <Link to='/cart' >
+          <img src={cart} className='cart menuItem' alt='Wayfaring cart logo' />
+        </Link>
+
       </section>
     </div>
   )

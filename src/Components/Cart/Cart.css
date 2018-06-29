@@ -2,14 +2,17 @@
     width: 200px;
     height: 200;
     position: relative;
+    border-radius: 10px;
 }
 
 /* REMOVE FROM CART */
+
 .remove_cart{
     width: 150px;
     opacity: 0;
-    left: 0;
+    /* left: 0; */
     position: absolute;
+    z-index: 99;
 }
 
 .gearPicParent:hover .remove_cart {
@@ -28,6 +31,12 @@
 .checkout_button:hover{
     width: 152px;
 }
+
+.checkout{
+    margin-top: 100px;
+}
+
+
 /* CHECKOUT BUTTON */
 
 

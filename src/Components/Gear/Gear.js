@@ -12,7 +12,7 @@ import background_logo from '../Assets/background_logo_outline.svg'
 
 
 class Gear extends Component {
-  
+
     componentDidMount() {
         axios.get('/api/gear').then((res) => {
             this.props.getGear(res.data);
@@ -37,9 +37,19 @@ class Gear extends Component {
         return (
             <div>
                 <Nav />
-                <div className='backgroundPhoto gearPhoto'  >
+                <div className='backgroundPhoto'  >
                     <img src={background_logo} className='background_logo' alt='' />
-                    {mappedGear}
+
+                    <div class="blue_underline ww_account">
+                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                            <rect class="shape" height="60" width="320" />
+                        </svg>
+                        <div class="text">GEAR</div>
+                    </div>
+
+                    <div className='gearPhotos' >
+                        {mappedGear}
+                    </div>
                 </div>
             </div>
         )

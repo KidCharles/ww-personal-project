@@ -44,6 +44,8 @@ flex-wrap: wrap-reverse;
 }
 .dashpics{
     width:100%;
+    border-radius: 10px;
+
 }
 
 .travelpic{
@@ -53,4 +55,16 @@ flex-wrap: wrap-reverse;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+
+
+
+@media(max-width: 700px){
+
+    .dashpics{
+        width:100%;
+    }
+    
 }

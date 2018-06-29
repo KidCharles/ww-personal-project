@@ -71,7 +71,7 @@ class Cart extends Component {
         console.log(this.state)
         let mappedCart = this.state.cart.map((e, i) => {
             return (
-                <div key={i}  >
+                <div key={i} className='gearPicParent'  >
                     {
                         this.state.cart[i].gear_name
                             ?
@@ -98,13 +98,22 @@ class Cart extends Component {
                 <div className='backgroundPhoto content'>
                     <img src={background_logo} className='background_logo' alt='' />
                     {/* <img src={my_cart} className='my_cart' /> */}
-                    <div class="svg-wrapper ww_account">
+
+                    <div class=" blue_underline ww_account">
                         <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
                             <rect class="shape" height="60" width="320" />
                         </svg>
                         <div class="text">MY WW CART</div>
+
                     </div>
+                    
                     <div className='' >
+                        {mappedCart.length > 0 ?
+                            <div className='gearPhotos'>
+                                {mappedCart}
+                            </div>
+                            : null
+                        }
 
                         {
                             this.state.cart.length === 0
@@ -114,15 +123,13 @@ class Cart extends Component {
 
 
                                 <Link to={{ pathname: '/checkout', query: { quantity: this.state.cartAmount, userId: this.state.userId } }} >
-                                    <img src={checkout_button} className='checkout_button' />
+                                    <div class="svg-wrapper  checkout">
+                                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                            <rect class="shape" height="60" width="320" />
+                                        </svg>
+                                        <div class="text ">CHECKOUT</div>
+                                    </div>
                                 </Link>
-                        }
-
-                        {mappedCart.length > 0 ?
-                            <div className='gearPhoto'>
-                                {mappedCart}
-                            </div>
-                            : null
                         }
                     </div>
                 </div>

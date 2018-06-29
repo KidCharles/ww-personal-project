@@ -86,17 +86,18 @@ class Account extends Component {
             <div >
                 <Nav />
                 <div className='backgroundPhoto content'>
-
-                    <div class="svg-wrapper ww_account">
-                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-                            <rect class="shape" height="60" width="320" />
-                        </svg>
-                        <div class="text">MY WW CART</div>
+                    <div className=' ww_account'>
+                        <div class="blue_underline">
+                            <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                <rect class="shape" height="60" width="320" />
+                            </svg>
+                            <div class="text">MY WW ACCOUNT</div>
+                        </div>
                     </div>
 
                     <p>Here you can make changes to your personal information</p>
+                    <div className='addressForm'>
                         <div class="text ship">SHIPPING ADDRESS</div>
-                    <div>
                         <p>Street 1*</p>
                         <input placeholder={this.state.currentS1} name='street1' onChange={e => this.handleInputChange(e)} />
                         <p>Street 2</p>
@@ -108,11 +109,29 @@ class Account extends Component {
                         <p>Zip*</p>
                         <input placeholder={this.state.currentZip} name='zip' onChange={e => this.handleInputChange(e)} />
                         <br />
-                        <button onClick={this.submitAddress} >Submit Changes</button>
-                        <Link to='' >
-                            <li href={process.env.REACT_APP_LOGOUT} className=''>LOGOUT</li>
+
+                        <div className=' ww_account'>
+                            <div class="svg-wrapper">
+                                <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                    <rect class="shape" height="60" width="320" />
+                                </svg>
+                                <div onClick={this.submitAddress} class="text">SUBMIT CHANGES</div>
+                            </div>
+                        </div>
+
+                        <div className=' ww_account'>
+                            <Link to='/' >
+                                <div class="svg-wrapper ">
+                                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                        <rect class="shape" height="60" width="320" />
+                                    </svg>
+                                    <div href={process.env.REACT_APP_LOGOUT} class="text">LOGOUT</div>
+                                </div>
                         </Link>
+                            </div>
+
                     </div>
+
                 </div>
             </div>
         )

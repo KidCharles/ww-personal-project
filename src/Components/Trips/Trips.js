@@ -18,7 +18,7 @@ class Trips extends Component {
         axios.get('/api/trips').then((res) => {
             this.props.getTrips(res.data);
         })
-     
+
     }
 
     addToCartTrips(id) {
@@ -43,7 +43,7 @@ class Trips extends Component {
                             <h1>Backpacker Package</h1>
                             <h1>{e.trip_short_desc}</h1>
                             <h1>${e.trip_price}</h1>
-                            <img src={add_cart} className='add_cart'  onClick={()=> this.addToCartTrips(e.trips_id)}/>
+                            <img src={add_cart} className='add_cart' onClick={() => this.addToCartTrips(e.trips_id)} />
                         </div>
                     </div>
                 </div>
@@ -53,6 +53,14 @@ class Trips extends Component {
             <div >
                 <Nav />
                 <div className='backgroundPhoto'>
+
+                    <div class="blue_underline ww_account">
+                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                            <rect class="shape" height="60" width="320" />
+                        </svg>
+                        <div class="text">TRIPS INFO</div>
+                    </div>
+
                     {mappedTrips}
                 </div>
             </div>

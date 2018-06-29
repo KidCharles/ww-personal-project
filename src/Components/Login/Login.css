@@ -39,8 +39,8 @@
 }
 
 .loginButton{
-    width:90px;
-    padding-top: 40px;
+  height: 50px;
+  padding-top: 80px;
 }
 
 .loginButton:hover{
@@ -108,6 +108,15 @@ html, body {
     -webkit-animation: 0.5s draw linear forwards;
     animation: 0.5s draw linear forwards;
   }
+
+  .blue_underline{
+    height: 60px;
+      margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 320px;
+}
 /* SVG ANIMATION */
 
 
