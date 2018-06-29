@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../Assets/ww_logo_white.svg';
 import background from '../Assets/login_background.svg';
-import video from '../Assets/ww_video.mp4'
+import video from '../Assets/ww_video.mp4';
 import './Login.css';
-import loginbutton from '../Assets/login_button.svg'
-import enter_button from '../Assets/enter_button.svg'
+import loginbutton from '../Assets/login_button.svg';
+import enter_button from '../Assets/enter_button.svg';
 
 export default class Login extends Component {
     constructor(props) {
@@ -35,7 +35,7 @@ export default class Login extends Component {
                         </svg>
                         <div class="text">HOVER</div>
                     </div>
-                    
+
                     <a href={process.env.REACT_APP_LOGIN}>
                         <img src={loginbutton} className='loginButton' />
                     </a>

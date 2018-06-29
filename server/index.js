@@ -127,7 +127,7 @@ app.get('/api/userInfo', (req, res) => {
 
 app.get('/auth/logout', (req, res) => {
     req.logOut();
-    return res.redirect(`https://${DOMAIN}/v2/logout?returnTo=${REACT_APP_FRONTEND_URL}`);
+    res.redirect(`https://${DOMAIN}/v2/logout?returnTo=${REACT_APP_FRONTEND_URL}`);
 })
 
 // app.get('/auth/me', (req, res, next) => {

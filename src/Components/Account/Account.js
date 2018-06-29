@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Nav from '../Nav/Nav';
 import '../Dashboard/Dashboard.css';
+import {Link} from 'react-router-dom';
 
 
 
@@ -100,6 +101,9 @@ class Account extends Component {
                         <input placeholder={this.state.currentZip} name='zip' onChange={e => this.handleInputChange(e)} />
                         <br />
                         <button onClick={this.submitAddress} >Submit Changes</button>
+                        <Link to='' >
+                        <li  href={process.env.REACT_APP_LOGOUT}  className=''>LOGOUT</li>
+                        </Link>
                     </div>
                 </div>
             </div>
