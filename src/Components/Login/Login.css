@@ -134,7 +134,7 @@ path {
     fill: #fff;
     stroke-dasharray: 2500;
     opacity: 10;
-    animation: animate 3s cubic-bezier(0,0.23,1,.1)
+    animation: animate 2s cubic-bezier(0,0.23,1,.1)
 }
 
 @keyframes animate {
@@ -151,7 +151,7 @@ path {
         opacity: 10;
         fill: none;
     }
-    90% {
+    85% {
         fill: rgba(255, 255, 255, 0);
     }
     100% {
