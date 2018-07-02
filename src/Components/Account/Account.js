@@ -120,15 +120,15 @@ class Account extends Component {
                         </div>
 
                         <div className=' ww_account'>
-                            <Link to='/' >
-                                <div class="svg-wrapper ">
-                                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-                                        <rect class="shape" height="60" width="320" />
-                                    </svg>
-                                    <div href={process.env.REACT_APP_LOGOUT} class="text">LOGOUT</div>
-                                </div>
-                        </Link>
+                            <div class="svg-wrapper ">
+                                <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                    <rect class="shape" height="60" width="320" />
+                                </svg>
+                                <a href={process.env.REACT_APP_LOGOUT}>
+                                    <div  class="text">LOGOUT</div>
+                                </a>
                             </div>
+                        </div>
 
                     </div>
 

@@ -22,7 +22,9 @@ const {
     CLIENT_SECRET,
     CALLBACK_URL,
     CONNECTION_STRING,
-    SERVER_PORT
+    SERVER_PORT,
+    REACT_APP_FRONTEND_URL,
+    LOGOUT_REDIRECT
 } = process.env
 
 const app = express()
@@ -111,12 +113,16 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 //this is checking user info
 app.get('/auth/user', (req, res) => {
     // console.log(req.user)    
-    if (req.user.is_admin === true) {
-        res.status(200).send(req.user);
-    } else {
-        res.status(401).send('Nice try')
+    if (req.user){
+        if (req.user.is_admin === true) {
+            res.status(200).send(req.user);
+        } else {
+            res.status(401).send('Nice try')
+        }
     }
 })
+
+
 
 app.get('/api/userInfo', (req, res) => {
     // console.log(req.user)
@@ -127,7 +133,7 @@ app.get('/api/userInfo', (req, res) => {
 
 app.get('/auth/logout', (req, res) => {
     req.logOut();
-    res.redirect(`https://${DOMAIN}/v2/logout?returnTo=${REACT_APP_FRONTEND_URL}`);
+     res.redirect(`https://${DOMAIN}/v2/logout?returnTo=http%3A%2F%2F${LOGOUT_REDIRECT}`);
 })
 
 // app.get('/auth/me', (req, res, next) => {
