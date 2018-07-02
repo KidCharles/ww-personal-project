@@ -134,7 +134,7 @@ class AdminTrip extends Component {
                             <div class="text">GEAR ADMIN FORM</div>
 
                         </div>
-                        <form>
+                        <form  >
                             <p>ENTER GEAR NAME:</p>
                             <input className='' onChange={(e) => this.handleGearName(e.target.value)} value={this.state.gear_name} type='text' />
                             <p>ENTER GEAR IMG:</p>
@@ -160,7 +160,7 @@ class AdminTrip extends Component {
                                 <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
                                     <rect class="shape" height="60" width="320" />
                                 </svg>
-                                <div href={process.env.REACT_APP_LOGOUT} class="text">ADD NEW  GEAR</div>
+                                <div class="text">ADD NEW  GEAR</div>
                             </div>
                             <br />
                         </form>

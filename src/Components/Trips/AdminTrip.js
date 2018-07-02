@@ -82,7 +82,7 @@ class AdminTrip extends Component {
     }
 
 
- 
+
 
     handleDrop = files => {
         // Push all the axios request promise into a single array
@@ -137,29 +137,50 @@ class AdminTrip extends Component {
         return (
             <div>
                 <Nav />
-                <div className='backgroundPhoto column' >
-                    <form className='column' >
-                        <p>ENTER TRIP NAME:</p>
-                        <input className='column' onChange={(e) => this.handleTripName(e.target.value)} value={this.state.trip_name} type='text'  />
-                        <p>ENTER TRIP ICON:</p>
-                        <Dropzone
-                            onDrop={this.handleDrop}
-                            multiple
-                            accept="image/*"
-                        >
-                            <p>Drop your files or click here to upload</p>
-                        </Dropzone>
-                        <input className='column' onChange={(e) => this.handleTripImg(e.target.value)} value={this.state.trip_img} type='text'  />
-                        <p>ENTER LONG DESCRIPTION:</p>
-                        <input className='column' onChange={(e) => this.handleLongDesc(e.target.value)} value={this.state.trip_long_desc} type='text' />
-                        <p>ENTER SHORT DESCRIPTION:</p>
-                        <input  className='column' onChange={(e) => this.handleShortDesc(e.target.value)}value={this.state.trip_short_desc} type='text' />
-                        <p>ENTER TRIP PRICE:</p>
-                        <input className='column' onChange={(e) => this.handleTripPrice(e.target.value)} value={this.state.trip_price} type='number'  />
-                        <p>ENTER COLOR:</p>
-                        <input  className='column' onChange={(e) => this.handleTripColor(e.target.value)} value={this.state.trip_color} type='color' />
-                        <button onClick={(e) => this.handleClick(e)} >CREATE NEW TRIP</button>
-                    </form>
+                <div className='backgroundPhoto ' >
+                    <div className='admin_form'>
+                        <div class=" blue_underline ww_account">
+                            <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                <rect class="shape" height="60" width="320" />
+                            </svg>
+                            <div class="text">TRIPS ADMIN FORM</div>
+                        </div>
+
+                        <form >
+                            <p>ENTER TRIP NAME:</p>
+                            <input onChange={(e) => this.handleTripName(e.target.value)} value={this.state.trip_name} type='text' />
+                            <p>ENTER TRIP ICON:</p>
+                            <Dropzone
+                                onDrop={this.handleDrop}
+                                multiple
+                                accept="image/*"
+                            >
+                                <p>Drop your files or click here to upload</p>
+                            </Dropzone>
+                            <input onChange={(e) => this.handleTripImg(e.target.value)} value={this.state.trip_img} type='text' />
+                            <p>ENTER LONG DESCRIPTION:</p>
+                            <input onChange={(e) => this.handleLongDesc(e.target.value)} value={this.state.trip_long_desc} type='text' />
+                            <p>ENTER SHORT DESCRIPTION:</p>
+                            <input onChange={(e) => this.handleShortDesc(e.target.value)} value={this.state.trip_short_desc} type='text' />
+                            <p>ENTER TRIP PRICE:</p>
+                            <input onChange={(e) => this.handleTripPrice(e.target.value)} value={this.state.trip_price} type='number' />
+                            <p>ENTER COLOR:</p>
+                            <input onChange={(e) => this.handleTripColor(e.target.value)} value={this.state.trip_color} type='color' />
+                            {/* <button onClick={(e) => this.handleClick(e)} >CREATE NEW TRIP</button> */}
+
+                            <br />
+                            <br />
+                            <br />
+                            <div class="svg-wrapper " onClick={(e) => this.handleClick(e)}>
+                                <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                    <rect class="shape" height="60" width="320" />
+                                </svg>
+                                <div class="text">ADD NEW TRIP</div>
+                            </div>
+                            <br />
+
+                        </form>
+                    </div >
 
                     <div className='row inventory' >
                         {mappedTrips}
