@@ -5,7 +5,8 @@ import axios from 'axios';
 import logo from '../Assets/wworld_logo_white.svg';
 import cart from '../Assets/cart.svg';
 import './Nav.css'
-import Drawer from '../Drawer/Drawer'
+import Drawer from '../Drawer/Drawer';
+import drawer_logo from '../Assets/ww_logo_white.svg';
 //import the action creators
 
 
@@ -57,6 +58,7 @@ export default class Nav extends Component {
                             <div className={this.state.drawerToggle ? 'bar bar1' : 'bar'}></div>
                             <div className={this.state.drawerToggle ? 'bar bar2' : 'bar'}></div>
                             <div className={this.state.drawerToggle ? 'bar bar3' : 'bar'}></div>
+                            <img src={drawer_logo} className={this.state.drawerToggle ? 'smallLogo  smallLogo2' : 'smallLogo'}></img>
                         </div>
 
                         <div className='header row'>
