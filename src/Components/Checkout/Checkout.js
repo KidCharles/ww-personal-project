@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import SweetAlert from 'sweetalert2-react';
 import './Checkout.css'
-import test from '../Assets/test.svg';
 import '../Dashboard/Dashboard.css';
 import purchase_alert from '../Assets/purchase_alert.svg';
 
@@ -96,7 +95,6 @@ export default class Checkout extends Component {
                             </div >
                             :
                             null
-                            
                     }
                 </div>
             </div>

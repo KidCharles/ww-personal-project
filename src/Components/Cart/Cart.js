@@ -107,7 +107,7 @@ class Cart extends Component {
 
                     </div>
                     
-                    <div className='' >
+                    <div >
                         {mappedCart.length > 0 ?
                             <div className='gearPhotos'>
                                 {mappedCart}

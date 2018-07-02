@@ -5,7 +5,8 @@ import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import Nav from '../Nav/Nav'
 import '../Dashboard/Dashboard.css';
-import './Gear.css'
+import './Gear.css';
+import '../Cart/Cart.css';
 
 
 class AdminTrip extends Component {
@@ -107,13 +108,15 @@ class AdminTrip extends Component {
     render() {
         let mappedGear = this.props.gear.map((e, i) => {
             return (
-                <div key={e.gear_id} className=' column instapic' >
-                    <img src={e.gear_img} className='' alt='Wayfaring World Product' />
+                <div key={e.gear_id} className=' gearPicParent' >
+                    <img src={e.gear_img} className='cart_item' alt='Wayfaring World Product' />
+                    <br/>
+                    <br/>
                     <button onClick={() => { this.props.deleteGear(e.gear_id) }}>DELETE</button>
+                    <h3 className='name' >{e.gear_name}</h3>
                     <p>${e.gear_price}</p>
-                    <p>{e.gear_name}</p>
-                    <p>{e.gear_long_desc}</p>
-                    <p>{e.gear_short_desc}</p>
+                    <p>- {e.gear_long_desc}</p>
+                    <p>- {e.gear_short_desc}</p>
                 </div>
             )
         })
@@ -121,36 +124,52 @@ class AdminTrip extends Component {
             <div>
                 <Nav />
                 <div className='backgroundPhoto' >
-                </div>
 
-                <div className='admin_form'>
 
-                    <form  >
-                        <p>ENTER GEAR NAME:</p>
-                        <input className='column' onChange={(e) => this.handleGearName(e.target.value)} value={this.state.gear_name} type='text' />
-                        <p>ENTER GEAR IMG:</p>
-                        <Dropzone
-                            onDrop={this.handleDrop}
-                            multiple
-                            accept="image/*"
-                        >
-                            <p>Drop your files or click here to upload</p>
-                        </Dropzone>
-                        <input className='column' onChange={(e) => this.handleGearImg(e.target.value)} value={this.state.gear_img} type='text' />
-                        <p>ENTER LONG DESCRIPTION:</p>
-                        <input className='column' onChange={(e) => this.handleGearLongDesc(e.target.value)} value={this.state.gear_long_desc} type='text' />
-                        <p>ENTER SHORT DESCRIPTION:</p>
-                        <input className='column' onChange={(e) => this.handleGearShortDesc(e.target.value)} value={this.state.gear_short_desc} type='text' />
-                        <p>ENTER GEAR PRICE:</p>
-                        <input className='column' onChange={(e) => this.handleGearPrice(e.target.value)} value={this.state.gear_price} type='number' />
-                        <button onClick={(e) => this.handleClick(e)} >CLICK TO ADD NEW PRODUCT TO GEAR</button>
-                    </form>
-                </div>
+                    <div className='admin_form'>
+                    <div class=" blue_underline ww_account">
+                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                            <rect class="shape" height="60" width="320" />
+                        </svg>
+                        <div class="text">GEAR ADMIN FORM</div>
 
-                <div className='row inventory' >
-                    {mappedGear}
+                    </div>
+                        <form >
+                            <p>ENTER GEAR NAME:</p>
+                            <input className='' onChange={(e) => this.handleGearName(e.target.value)} value={this.state.gear_name} type='text' />
+                            <p>ENTER GEAR IMG:</p>
+                            <Dropzone
+                                onDrop={this.handleDrop}
+                                multiple
+                                accept="image/*"
+                            >
+                                <p>Drop your files or click here to upload</p>
+                            </Dropzone>
+                            <input className='' onChange={(e) => this.handleGearImg(e.target.value)} value={this.state.gear_img} type='text' />
+                            <p>ENTER LONG DESCRIPTION:</p>
+                            <input className='' onChange={(e) => this.handleGearLongDesc(e.target.value)} value={this.state.gear_long_desc} type='text' />
+                            <p>ENTER SHORT DESCRIPTION:</p>
+                            <input className='' onChange={(e) => this.handleGearShortDesc(e.target.value)} value={this.state.gear_short_desc} type='text' />
+                            <p>ENTER GEAR PRICE:</p>
+                            <input className='' onChange={(e) => this.handleGearPrice(e.target.value)} value={this.state.gear_price} type='number' />
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div class="svg-wrapper "onClick={(e) => this.handleClick(e)}>
+                                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                        <rect class="shape" height="60" width="320" />
+                                    </svg>
+                                    <div href={process.env.REACT_APP_LOGOUT} class="text">ADD NEW  GEAR</div>
+                                </div>
+                            <br/>
+                        </form>
+                    </div>
+
+                    <div className='gearPhotos' >
+                        {mappedGear}
+                    </div>
+
                 </div>
-                
             </div>
         )
     }

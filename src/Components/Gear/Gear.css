@@ -50,6 +50,20 @@
 
 /* ADMIN FORM  */
 .admin_form{
-    width: 200px;
+    background-color: rgba(0, 0, 0, 0.442);
+    width:50%;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.ship{
+    padding-top: 80px;
 }
 /* ADMIN FORM  */
+
+.name{
+    color: whitesmoke;
+}
