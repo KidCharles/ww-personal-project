@@ -61,11 +61,11 @@ class Dashboard extends Component {
                 </div>
             </div>
         )
-
+console.log(this.props.trips)
         let mappedTrips = this.props.trips.map((e, i) => {
             return (
                 <Link to='/trip' key={"trips" + i}>
-                    <div style={{ "backgroundColor": e.trip_color }} className='travelpic ' >
+                    <div style={{ "backgroundColor": e.trip_color }} className='travelpic column' >
                         <div >
                             <img src={e.trip_img} className='tripIcon' alt='trip pic' />
                         </div>

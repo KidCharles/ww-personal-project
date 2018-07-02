@@ -33,7 +33,7 @@ class Trips extends Component {
                 <div key={e.trips_id} style={{ "backgroundColor": e.trip_color }} className='trips' >
                     <div className='row tripBanner'>
                         <div className='coord'>
-                            <h1>coordinates</h1>
+                            <h1>37.8651° N, 119.5383° W</h1>
                             <div className='column trip_img' >
                                 <img src={e.trip_img} className='' alt='trip pic' />
                                 <h1>{e.trip_name}</h1>
@@ -41,7 +41,8 @@ class Trips extends Component {
                         </div>
                         <div className='' >
                             <h1>Backpacker Package</h1>
-                            <h1>{e.trip_short_desc}</h1>
+                            <p>{e.trip_long_desc}</p>
+                            <p>{e.trip_short_desc}</p>
                             <h1>${e.trip_price}</h1>
                             <img src={add_cart} className='add_cart' onClick={() => this.addToCartTrips(e.trips_id)} />
                         </div>

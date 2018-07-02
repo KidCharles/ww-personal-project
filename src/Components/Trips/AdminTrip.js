@@ -4,6 +4,7 @@ import { addTrip, getTrips, deleteTrip } from '../../ducks/reducer';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import Nav from '../Nav/Nav'
+import './Trip.css'
 
 
 class AdminTrip extends Component {
@@ -150,13 +151,18 @@ class AdminTrip extends Component {
                             <p>ENTER TRIP NAME:</p>
                             <input onChange={(e) => this.handleTripName(e.target.value)} value={this.state.trip_name} type='text' />
                             <p>ENTER TRIP ICON:</p>
-                            <Dropzone
-                                onDrop={this.handleDrop}
-                                multiple
-                                accept="image/*"
-                            >
-                                <p>Drop your files or click here to upload</p>
-                            </Dropzone>
+
+                            <div className='Drop_middle' >
+                                <Dropzone
+                                    onDrop={this.handleDrop}
+                                    multiple
+                                    accept="image/*"
+                                // style={{ margin: 0 auto }}
+                                >
+                                    <p>Drop your files or click here to upload</p>
+                                </Dropzone>
+                            </div>
+
                             <input onChange={(e) => this.handleTripImg(e.target.value)} value={this.state.trip_img} type='text' />
                             <p>ENTER LONG DESCRIPTION:</p>
                             <input onChange={(e) => this.handleLongDesc(e.target.value)} value={this.state.trip_long_desc} type='text' />

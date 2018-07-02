@@ -138,14 +138,16 @@ class AdminTrip extends Component {
                             <p>ENTER GEAR NAME:</p>
                             <input className='' onChange={(e) => this.handleGearName(e.target.value)} value={this.state.gear_name} type='text' />
                             <p>ENTER GEAR IMG:</p>
-                            <Dropzone
-                                onDrop={this.handleDrop}
-                                multiple
-                                accept="image/*"
-                                
-                            >
-                                <p>Drop your files or click here to upload</p>
-                            </Dropzone>
+                            <div className='Drop_middle' >
+                                <Dropzone
+                                    onDrop={this.handleDrop}
+                                    multiple
+                                    accept="image/*"
+
+                                >
+                                    <p>Drop your files or click here to upload</p>
+                                </Dropzone>
+                            </div>
                             <input className='' onChange={(e) => this.handleGearImg(e.target.value)} value={this.state.gear_img} type='text' />
                             <p>ENTER LONG DESCRIPTION:</p>
                             <input className='' onChange={(e) => this.handleGearLongDesc(e.target.value)} value={this.state.gear_long_desc} type='text' />

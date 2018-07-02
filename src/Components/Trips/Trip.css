@@ -19,3 +19,9 @@
     display: flex;
     justify-content: space-around;
 }
+
+
+.Drop_middle{
+    display: flex;
+    justify-content: center;
+}
