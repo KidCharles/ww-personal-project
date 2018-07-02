@@ -55,7 +55,7 @@
     height: 50px;
     -webkit-transition: .8s;
     -o-transition: .8s;
-    transition: .5s .03s;
+    transition: .5s .3s;
     opacity: 0;
     top: 35px;
     left: 95px;
@@ -73,7 +73,7 @@
     width: 35px;
     height: 4px;
     margin: 3px;
-    transition: .3s;
+    transition: .8s;
     margin-left: 100px;
 }
 .bar1{
