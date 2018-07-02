@@ -110,8 +110,8 @@ class AdminTrip extends Component {
             return (
                 <div key={e.gear_id} className=' gearPicParent' >
                     <img src={e.gear_img} className='cart_item' alt='Wayfaring World Product' />
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                     <button onClick={() => { this.props.deleteGear(e.gear_id) }}>DELETE</button>
                     <h3 className='name' >{e.gear_name}</h3>
                     <p>${e.gear_price}</p>
@@ -127,14 +127,14 @@ class AdminTrip extends Component {
 
 
                     <div className='admin_form'>
-                    <div class=" blue_underline ww_account">
-                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-                            <rect class="shape" height="60" width="320" />
-                        </svg>
-                        <div class="text">GEAR ADMIN FORM</div>
+                        <div class=" blue_underline ww_account">
+                            <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                <rect class="shape" height="60" width="320" />
+                            </svg>
+                            <div class="text">GEAR ADMIN FORM</div>
 
-                    </div>
-                        <form >
+                        </div>
+                        <form>
                             <p>ENTER GEAR NAME:</p>
                             <input className='' onChange={(e) => this.handleGearName(e.target.value)} value={this.state.gear_name} type='text' />
                             <p>ENTER GEAR IMG:</p>
@@ -142,6 +142,7 @@ class AdminTrip extends Component {
                                 onDrop={this.handleDrop}
                                 multiple
                                 accept="image/*"
+                                
                             >
                                 <p>Drop your files or click here to upload</p>
                             </Dropzone>
@@ -152,16 +153,16 @@ class AdminTrip extends Component {
                             <input className='' onChange={(e) => this.handleGearShortDesc(e.target.value)} value={this.state.gear_short_desc} type='text' />
                             <p>ENTER GEAR PRICE:</p>
                             <input className='' onChange={(e) => this.handleGearPrice(e.target.value)} value={this.state.gear_price} type='number' />
-                            <br/>
-                            <br/>
-                            <br/>
-                            <div class="svg-wrapper "onClick={(e) => this.handleClick(e)}>
-                                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-                                        <rect class="shape" height="60" width="320" />
-                                    </svg>
-                                    <div href={process.env.REACT_APP_LOGOUT} class="text">ADD NEW  GEAR</div>
-                                </div>
-                            <br/>
+                            <br />
+                            <br />
+                            <br />
+                            <div class="svg-wrapper " onClick={(e) => this.handleClick(e)}>
+                                <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                    <rect class="shape" height="60" width="320" />
+                                </svg>
+                                <div href={process.env.REACT_APP_LOGOUT} class="text">ADD NEW  GEAR</div>
+                            </div>
+                            <br />
                         </form>
                     </div>
 

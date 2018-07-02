@@ -57,6 +57,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    border-radius: 10px;
 }
 
 .ship{
@@ -66,4 +67,12 @@
 
 .name{
     color: whitesmoke;
+}
+
+.drop{
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
