@@ -7,7 +7,7 @@ import SweetAlert from 'sweetalert2-react';
 import './Checkout.css'
 import test from '../Assets/test.svg';
 import '../Dashboard/Dashboard.css';
-
+import purchase_alert from '../Assets/purchase_alert.svg';
 
 export default class Checkout extends Component {
     constructor() {
@@ -75,14 +75,14 @@ export default class Checkout extends Component {
                 <Nav />
                 <div className='backgroundPhoto content' >
                     <div>
-                        <p>Your address:</p>
+                        <p>YOUR ADDRESS:</p>
                         <p>street: {this.state.street1}</p>
                         <p>city: {this.state.city}</p>
                         <p>state: {this.state.state}</p>
                         <p>zip: {this.state.zip}</p>
                         <p>If your address is not correct, please update it on your "Account" page before completing your purchase</p>
                     </div>
-                    <h1> Your Total is: ${this.state.price / 100}.00</h1>
+                    <h1> YOUR TOTAL IS: ${this.state.price / 100}.00</h1>
                     <StripeCheckout
                         token={this.onToken}
                         stripeKey={'pk_test_BZOzha6BMPIWIleFQ5q0Myht'}
@@ -91,12 +91,12 @@ export default class Checkout extends Component {
                     {
                         this.state.alertToggle
                             ?
-                            <div className='thanks' >
-                                <img src={test} className='' alt='' />
-                                <button type='' className='' onClick={() => this.handleClick()} >NEXT</button>
+                            <div className='thanks'onClick={() => this.handleClick()}  >
+                                <img src={purchase_alert} className='purchase' alt='' />
                             </div >
                             :
                             null
+                            
                     }
                 </div>
             </div>
